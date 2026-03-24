@@ -418,6 +418,160 @@ input[type=range] { width: 100%; accent-color: var(--pg); cursor: pointer; }
   z-index: 998; pointer-events: none; white-space: nowrap; text-align: center;
   line-height: 1.8;
 }
+
+/* ══════════════════════════════════════════════════════════
+   FINGROW ANIMATION SYSTEM
+══════════════════════════════════════════════════════════ */
+
+/* ── 1. SCANLINES background overlay ──────────────────── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.18) 2px,
+    rgba(0,0,0,0.18) 4px
+  );
+  animation: scanline-drift 8s linear infinite;
+}
+@keyframes scanline-drift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 100px; }
+}
+
+/* ── 2. SCAN GLOW — sweeping horizontal light ──────────── */
+body::after {
+  content: '';
+  position: fixed; top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,255,65,0.03), transparent);
+  pointer-events: none; z-index: 1;
+  animation: scan-sweep 6s ease-in-out infinite;
+}
+@keyframes scan-sweep {
+  0%   { left: -60%; }
+  100% { left: 120%; }
+}
+
+/* ── 3. PAGE LOAD — staggered fade-in ─────────────────── */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.screen.active .topbar        { animation: fade-in-up .3s ease both; }
+.screen.active .hero          { animation: fade-in-up .35s .05s ease both; }
+.screen.active .metric-grid   { animation: fade-in-up .35s .10s ease both; }
+.screen.active .section:nth-child(1) { animation: fade-in-up .35s .15s ease both; }
+.screen.active .section:nth-child(2) { animation: fade-in-up .35s .20s ease both; }
+.screen.active .section:nth-child(3) { animation: fade-in-up .35s .25s ease both; }
+.screen.active .attr-grid     { animation: fade-in-up .35s .10s ease both; }
+.screen.active .fit-tab-row   { animation: fade-in-up .35s .15s ease both; }
+.screen.active .ctrl-sec      { animation: fade-in-up .35s .05s ease both; }
+.screen.active .pw-modal      { animation: fade-in-up .4s .1s ease both; }
+.screen.active #pw-trial-summary { animation: fade-in-up .4s .1s ease both; }
+
+/* ── 4. BUTTON PRESS — pixel punch ────────────────────── */
+.num-btn:active,
+.fit-submit:active,
+.submit-btn:active,
+.cta-btn:active,
+.add-btn:active,
+.type-btn:active,
+.fit-tab:active,
+.chip:active {
+  transform: scale(0.92) translateY(2px);
+  filter: brightness(1.3);
+  transition: transform .06s, filter .06s;
+}
+.num-btn, .fit-submit, .submit-btn, .cta-btn, .add-btn, .type-btn, .fit-tab, .chip {
+  transition: transform .12s, filter .12s, background .15s, border-color .15s, color .15s;
+}
+
+/* ── 5. CARD HOVER ─────────────────────────────────────── */
+.tx:hover {
+  background: #141414;
+  transform: translateX(3px);
+  transition: transform .15s, background .15s;
+}
+.badge:hover {
+  transform: scale(1.08) translateY(-2px);
+  transition: transform .15s;
+}
+.badge.unlocked:hover {
+  box-shadow: 0 0 8px rgba(255,215,0,0.3);
+}
+.m-card:hover {
+  background: #161616;
+  transition: background .15s;
+}
+.exercise-item:hover {
+  transform: translateX(3px);
+  transition: transform .15s;
+}
+
+/* ── 6. PIXEL AVATAR — idle walk cycle ────────────────── */
+@keyframes pixel-idle {
+  0%,100% { transform: translateY(0px); }
+  25%     { transform: translateY(-2px); }
+  50%     { transform: translateY(0px); }
+  75%     { transform: translateY(-1px); }
+}
+@keyframes pixel-idle-fit {
+  0%,100% { transform: translateY(0px) scaleX(1); }
+  20%     { transform: translateY(-3px) scaleX(1); }
+  40%     { transform: translateY(0px) scaleX(1); }
+  60%     { transform: translateY(-2px) scaleX(-1); }
+  80%     { transform: translateY(0px) scaleX(-1); }
+}
+.avatar svg       { animation: pixel-idle 1.6s ease-in-out infinite; }
+.fit-avatar svg   { animation: pixel-idle-fit 2s ease-in-out infinite; }
+
+/* ── 7. XP BAR PULSE on fill ───────────────────────────── */
+@keyframes xp-pulse {
+  0%,100% { box-shadow: none; }
+  50%     { box-shadow: 0 0 6px var(--gold); }
+}
+#xp-progress-bar { animation: xp-pulse 2s ease-in-out infinite; }
+
+/* ── 8. LOGO flicker ───────────────────────────────────── */
+@keyframes logo-flicker {
+  0%,96%,100% { opacity: 1; }
+  97%          { opacity: 0.6; }
+  98%          { opacity: 1; }
+  99%          { opacity: 0.4; }
+}
+.logo { animation: logo-flicker 5s step-end infinite; }
+
+/* ── 9. METRIC VALUE count-up flash ───────────────────── */
+@keyframes count-flash {
+  0%   { color: #fff; transform: scale(1.2); }
+  100% { color: inherit; transform: scale(1); }
+}
+.count-flash { animation: count-flash .35s ease both; }
+
+/* ── 10. SCREEN TRANSITION ─────────────────────────────── */
+@keyframes screen-in {
+  from { opacity: 0; transform: translateX(10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.screen.active { animation: screen-in .2s ease both; }
+
+/* ── 11. ATTR BAR glow on update ───────────────────────── */
+@keyframes attr-glow {
+  0%   { box-shadow: 0 0 0 rgba(255,107,43,0); }
+  50%  { box-shadow: 0 0 8px rgba(255,107,43,0.6); }
+  100% { box-shadow: 0 0 0 rgba(255,107,43,0); }
+}
+.attr-bar-fill.str-b { animation: attr-glow 2s ease-in-out infinite; }
+
+/* ── 12. TRIAL BADGE pulse ─────────────────────────────── */
+@keyframes trial-pulse {
+  0%,100% { box-shadow: 0 0 0 rgba(255,215,0,0); }
+  50%     { box-shadow: 0 0 8px rgba(255,215,0,0.4); }
+}
+.trial-badge { animation: blink 1.5s step-end infinite, trial-pulse 2s ease-in-out infinite; }
+
 </style>
 </head>
 <body>
@@ -1438,11 +1592,23 @@ function updateDashMetric(id, amt, op) {
   const el = document.getElementById(id);
   if (!el) return;
   const cur = parseInt(el.textContent.replace(/,/g,'')) || 0;
-  const next = op==='+' ? cur + amt : cur - amt;
-  el.textContent = next.toLocaleString();
-  el.style.transform = 'scale(1.15)';
-  el.style.transition = 'transform .2s';
-  setTimeout(() => { el.style.transform = 'scale(1)'; }, 250);
+  const target = op==='+' ? cur + amt : cur - amt;
+  countUp(el, cur, target, 400);
+}
+
+function countUp(el, from, to, duration) {
+  const start = performance.now();
+  el.classList.add('count-flash');
+  setTimeout(() => el.classList.remove('count-flash'), 400);
+  function step(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const val = Math.round(from + (to - from) * ease);
+    el.textContent = val.toLocaleString();
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = to.toLocaleString();
+  }
+  requestAnimationFrame(step);
 }
 function resetAdd() {
   raw = ''; selCat = ''; entryType = 'exp';
