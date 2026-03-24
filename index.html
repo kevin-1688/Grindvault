@@ -636,7 +636,7 @@ body::after {
     </div>
 
     <!-- ── FINANCE METRICS ── -->
-    <div style="padding:10px 16px 4px;font-size:8px;color:var(--dim);letter-spacing:2px;background:var(--panel2);border-bottom:1px solid var(--border);">◆ WEALTH QUEST</div>
+    <div style="padding:10px 16px 4px;font-size:8px;color:var(--dim);letter-spacing:2px;background:var(--panel2);border-bottom:1px solid var(--border);" data-i="wealth_label">◆ WEALTH QUEST</div>
     <div class="metric-grid">
       <div class="m-card">
         <div class="m-label" data-i="lbl_income">本月收入</div>
@@ -657,7 +657,7 @@ body::after {
     <div id="levelup-toast" style="position:fixed;top:60px;left:50%;transform:translateX(-50%) translateY(-20px);background:#001a00;border:2px solid var(--gold);color:var(--gold);font-family:'Press Start 2P',monospace;font-size:9px;padding:8px 16px;opacity:0;transition:opacity .4s,transform .4s;z-index:999;pointer-events:none;white-space:nowrap;"></div>
 
     <!-- ── BODY TECH METRICS ── -->
-    <div style="padding:10px 16px 4px;font-size:8px;color:#664422;letter-spacing:2px;background:#0d0500;border-bottom:1px solid #2a1a0a;border-top:1px solid #2a1a0a;">▲ BODY TECH</div>
+    <div style="padding:10px 16px 4px;font-size:8px;color:#664422;letter-spacing:2px;background:#0d0500;border-bottom:1px solid #2a1a0a;border-top:1px solid #2a1a0a;" data-i="body_label">▲ BODY TECH</div>
     <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:#2a1a0a;border-bottom:1px solid #2a1a0a;">
       <div style="background:#0d0500;padding:11px 8px;text-align:center;">
         <div style="font-size:7px;color:#664422;margin-bottom:5px;">STR</div>
@@ -686,13 +686,13 @@ body::after {
         <div style="font-family:'Press Start 2P',monospace;font-size:9px;color:var(--fire);" id="dash-fat">18.2 <span style="font-size:6px;color:#664422">%</span></div>
       </div>
       <div style="background:#0d0500;padding:10px 8px;text-align:center;">
-        <div style="font-size:7px;color:#664422;margin-bottom:4px;">連續天數</div>
+        <div style="font-size:7px;color:#664422;margin-bottom:4px;" data-i="streak_label">連續天數</div>
         <div style="font-family:'Press Start 2P',monospace;font-size:9px;color:var(--amber);">3 <span style="font-size:6px;color:#664422">天</span></div>
       </div>
     </div>
     <div style="display:flex;gap:6px;padding:10px 16px;background:#0d0500;border-bottom:1px solid #2a1a0a;">
-      <button onclick="gotoScreen('s-fit')" style="flex:1;padding:8px;background:#1a0800;border:1px solid var(--fire);color:var(--fire);font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;">▲ 訓練記錄</button>
-      <button onclick="gotoScreen('s-fit');setFitTab('body')" style="flex:1;padding:8px;background:#1a0800;border:1px solid #664422;color:#664422;font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;">● 更新身體</button>
+      <button onclick="gotoScreen('s-fit')" style="flex:1;padding:8px;background:#1a0800;border:1px solid var(--fire);color:var(--fire);font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;" data-i="btn_train">▲ 訓練記錄</button>
+      <button onclick="gotoScreen('s-fit');setFitTab('body')" style="flex:1;padding:8px;background:#1a0800;border:1px solid #664422;color:#664422;font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;" data-i="btn_body">● 更新身體</button>
     </div>
 
     <!-- ── ACHIEVEMENTS ── -->
@@ -924,25 +924,25 @@ body::after {
 
     <div id="pw-trial-summary" style="display:none;padding:20px 14px;">
       <div style="background:#0d0d0d;border:2px solid var(--pg);padding:20px;text-align:center;">
-        <div style="font-family:'Press Start 2P',monospace;font-size:8px;color:var(--dim);letter-spacing:3px;margin-bottom:12px;animation:blink 2s step-end infinite;">7 DAYS COMPLETE</div>
-        <div style="font-family:'Press Start 2P',monospace;font-size:12px;color:var(--pg);line-height:2;margin-bottom:16px;">試用結束！<br>你做到了</div>
+        <div style="font-family:'Press Start 2P',monospace;font-size:8px;color:var(--dim);letter-spacing:3px;margin-bottom:12px;animation:blink 2s step-end infinite;" data-i="trial_complete">7 DAYS COMPLETE</div>
+        <div style="font-family:'Press Start 2P',monospace;font-size:12px;color:var(--pg);line-height:2;margin-bottom:16px;" data-i="trial_done">試用結束！<br>你做到了</div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px;">
           <div style="background:#001a00;border:1px solid var(--border);padding:10px 6px;text-align:center;">
             <div style="font-family:'Press Start 2P',monospace;font-size:14px;color:var(--gold);" id="summary-lv">LV.1</div>
-            <div style="font-size:7px;color:var(--dim);margin-top:4px;">等級</div>
+            <div style="font-size:7px;color:var(--dim);margin-top:4px;" data-i="summary_lv_lbl">等級</div>
           </div>
           <div style="background:#001a00;border:1px solid var(--border);padding:10px 6px;text-align:center;">
             <div style="font-family:'Press Start 2P',monospace;font-size:14px;color:var(--pg);" id="summary-badges">3</div>
-            <div style="font-size:7px;color:var(--dim);margin-top:4px;">徽章</div>
+            <div style="font-size:7px;color:var(--dim);margin-top:4px;" data-i="summary_badge_lbl">徽章</div>
           </div>
           <div style="background:#001a00;border:1px solid var(--border);padding:10px 6px;text-align:center;">
             <div style="font-family:'Press Start 2P',monospace;font-size:14px;color:var(--gold);" id="summary-xp">40</div>
-            <div style="font-size:7px;color:var(--dim);margin-top:4px;">XP</div>
+            <div style="font-size:7px;color:var(--dim);margin-top:4px;" data-i="summary_xp_lbl">XP</div>
           </div>
         </div>
-        <div style="font-size:9px;color:var(--dim);margin-bottom:16px;line-height:1.9;">你的角色已成長，繼續養成冒險者吧！<br>解鎖 PRO 保留所有進度 + 完整功能</div>
-        <button onclick="proceedToPlans()" style="width:100%;padding:13px;background:#001a00;border:2px solid var(--pg);color:var(--pg);font-family:'Press Start 2P',monospace;font-size:9px;letter-spacing:2px;cursor:pointer;">▶ 繼續養成冒險者</button>
-        <button onclick="gotoScreen('s-home')" style="width:100%;margin-top:8px;padding:10px;background:none;border:1px solid var(--dim);color:var(--dim);font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;">先看看舊數據</button>
+        <div style="font-size:9px;color:var(--dim);margin-bottom:16px;line-height:1.9;" data-i="trial_msg">你的角色已成長，繼續養成冒險者吧！<br>解鎖 PRO 保留所有進度 + 完整功能</div>
+        <button onclick="proceedToPlans()" style="width:100%;padding:13px;background:#001a00;border:2px solid var(--pg);color:var(--pg);font-family:'Press Start 2P',monospace;font-size:9px;letter-spacing:2px;cursor:pointer;" data-i="trial_cta">▶ 繼續養成冒險者</button>
+        <button onclick="gotoScreen('s-home')" style="width:100%;margin-top:8px;padding:10px;background:none;border:1px solid var(--dim);color:var(--dim);font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;" data-i="trial_free">先看看舊數據</button>
       </div>
     </div>
 
@@ -1029,7 +1029,7 @@ body::after {
 <div class="screen" id="s-fit">
   <div class="topbar" style="background:#0d0500;border-bottom:2px solid #2a1a0a;">
     <div class="logo" style="color:var(--fire)">FIN<span style="color:var(--amber)">GROW</span></div>
-    <div style="font-family:'Press Start 2P',monospace;font-size:8px;color:var(--amber);">BODY TECH</div>
+    <div style="font-family:'Press Start 2P',monospace;font-size:8px;color:var(--amber);" data-i="fit_module">BODY TECH</div>
     <div class="lang-row">
       <button class="lang-btn active" onclick="setLang('zh',this)" style="border-color:#664422;color:#664422;">中</button>
       <button class="lang-btn" onclick="setLang('en',this)" style="border-color:#664422;color:#664422;">EN</button>
@@ -1058,14 +1058,14 @@ body::after {
       </div>
       <div class="fit-hero-right">
         <div class="fit-username">PLAYER_01</div>
-        <div class="fit-streak" id="fit-streak">▶ 連續訓練 3 天 — 燃脂火焰解鎖！</div>
+        <div class="fit-streak" id="fit-streak" data-i="fit_streak">▶ 連續訓練 3 天 — 燃脂火焰解鎖！</div>
         <div style="display:flex;gap:4px;margin-top:4px;">
           <div style="width:14px;height:14px;background:var(--fire);display:flex;align-items:center;justify-content:center;font-size:9px;">▲</div>
           <div style="width:14px;height:14px;background:#1a0800;border:1px solid var(--fire);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--fire);">▲</div>
           <div style="width:14px;height:14px;background:#1a0800;border:1px solid var(--fire);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--fire);">▲</div>
           <div style="width:14px;height:14px;background:#1a0800;border:1px solid #2a1a0a;display:flex;align-items:center;justify-content:center;font-size:9px;color:#664422;">▲</div>
           <div style="width:14px;height:14px;background:#1a0800;border:1px solid #2a1a0a;display:flex;align-items:center;justify-content:center;font-size:9px;color:#664422;">▲</div>
-          <div style="font-size:8px;color:#664422;margin-left:4px;align-self:center;">連續天數</div>
+          <div style="font-size:8px;color:#664422;margin-left:4px;align-self:center;" data-i="fit_streak_lbl">連續天數</div>
         </div>
       </div>
     </div>
@@ -1097,15 +1097,15 @@ body::after {
     <!-- log tabs -->
     <div id="fit-main">
       <div class="fit-tab-row">
-        <button class="fit-tab active" id="ftab-strength" onclick="setFitTab('strength')">重訓</button>
-        <button class="fit-tab" id="ftab-cardio" onclick="setFitTab('cardio')">有氧</button>
-        <button class="fit-tab" id="ftab-body" onclick="setFitTab('body')">身體</button>
-        <button class="fit-tab" id="ftab-sleep" onclick="setFitTab('sleep')">睡眠</button>
+        <button class="fit-tab active" id="ftab-strength" onclick="setFitTab('strength')" data-i="ftab_strength">重訓</button>
+        <button class="fit-tab" id="ftab-cardio" onclick="setFitTab('cardio')" data-i="ftab_cardio">有氧</button>
+        <button class="fit-tab" id="ftab-body" onclick="setFitTab('body')" data-i="ftab_body">身體</button>
+        <button class="fit-tab" id="ftab-sleep" onclick="setFitTab('sleep')" data-i="ftab_sleep">睡眠</button>
       </div>
 
       <!-- strength -->
       <div class="fit-log-panel active" id="fp-strength">
-        <div class="fit-section-title">今日重訓紀錄</div>
+        <div class="fit-section-title" data-i="fit_today_strength">今日重訓紀錄</div>
         <div class="exercise-list" id="ex-list">
           <div class="exercise-item">
             <div class="ex-name">深蹲 Squat</div>
@@ -1118,32 +1118,32 @@ body::after {
             <div class="ex-xp">+20XP</div>
           </div>
         </div>
-        <div class="fit-section-title">新增動作</div>
+        <div class="fit-section-title" data-i="fit_add_exercise">新增動作</div>
         <div class="fit-input-row">
-          <div class="fit-lbl">動作名稱</div>
-          <input class="fit-inp" id="ex-name" placeholder="深蹲、硬舉...">
+          <div class="fit-lbl" data-i="fit_lbl_name">動作名稱</div>
+          <input class="fit-inp" id="ex-name" data-ph-zh="深蹲、硬舉..." data-ph-en="Squat, Deadlift..." placeholder="深蹲、硬舉...">
         </div>
         <div style="display:flex;gap:8px;">
           <div class="fit-input-row" style="flex:1">
-            <div class="fit-lbl">組數</div>
+            <div class="fit-lbl" data-i="fit_lbl_sets">組數</div>
             <input class="fit-inp" id="ex-sets" type="number" placeholder="4" style="width:100%">
           </div>
           <div class="fit-input-row" style="flex:1">
-            <div class="fit-lbl">重量</div>
+            <div class="fit-lbl" data-i="fit_lbl_weight">重量</div>
             <input class="fit-inp" id="ex-weight" type="number" placeholder="80">
             <div class="fit-unit">kg</div>
           </div>
           <div class="fit-input-row" style="flex:1">
-            <div class="fit-lbl">次數</div>
+            <div class="fit-lbl" data-i="fit_lbl_reps">次數</div>
             <input class="fit-inp" id="ex-reps" type="number" placeholder="8">
           </div>
         </div>
-        <button class="fit-submit" onclick="logStrength()">▶ 記錄重訓</button>
+        <button class="fit-submit" onclick="logStrength()" data-i="fit_submit_strength">▶ 記錄重訓</button>
       </div>
 
       <!-- cardio -->
       <div class="fit-log-panel" id="fp-cardio">
-        <div class="fit-section-title">今日有氧紀錄</div>
+        <div class="fit-section-title" data-i="fit_today_cardio">今日有氧紀錄</div>
         <div class="exercise-list">
           <div class="exercise-item" style="border-left-color:var(--amber)">
             <div class="ex-name">慢跑</div>
@@ -1151,42 +1151,42 @@ body::after {
             <div class="ex-xp" style="color:var(--amber)">+18XP</div>
           </div>
         </div>
-        <div class="fit-section-title">新增有氧</div>
+        <div class="fit-section-title" data-i="fit_add_cardio">新增有氧</div>
         <div class="fit-input-row">
-          <div class="fit-lbl">類型</div>
-          <input class="fit-inp" id="c-type" placeholder="慢跑、騎車、游泳...">
+          <div class="fit-lbl" data-i="fit_lbl_type">類型</div>
+          <input class="fit-inp" id="c-type" data-ph-zh="慢跑、騎車、游泳..." data-ph-en="Run, Bike, Swim..." placeholder="慢跑、騎車、游泳...">
         </div>
         <div style="display:flex;gap:8px;">
           <div class="fit-input-row" style="flex:1">
-            <div class="fit-lbl">時間</div>
+            <div class="fit-lbl" data-i="fit_lbl_min">時間</div>
             <input class="fit-inp" id="c-min" type="number" placeholder="30">
             <div class="fit-unit">分</div>
           </div>
           <div class="fit-input-row" style="flex:1">
-            <div class="fit-lbl">距離</div>
+            <div class="fit-lbl" data-i="fit_lbl_km">距離</div>
             <input class="fit-inp" id="c-km" type="number" placeholder="5">
             <div class="fit-unit">km</div>
           </div>
         </div>
         <div class="fit-input-row">
-          <div class="fit-lbl">消耗</div>
-          <input class="fit-inp" id="c-cal" type="number" placeholder="自動估算或手填">
+          <div class="fit-lbl" data-i="fit_lbl_cal">消耗</div>
+          <input class="fit-inp" id="c-cal" type="number" data-ph-zh="自動估算或手填" data-ph-en="Auto or manual" placeholder="自動估算或手填">
           <div class="fit-unit">kcal</div>
         </div>
-        <button class="fit-submit" style="border-color:var(--amber);color:var(--amber);background:#1a1000;" onclick="logCardio()">▶ 記錄有氧</button>
+        <button class="fit-submit" style="border-color:var(--amber);color:var(--amber);background:#1a1000;" onclick="logCardio()" data-i="fit_submit_cardio">▶ 記錄有氧</button>
       </div>
 
       <!-- body stats -->
       <div class="fit-log-panel" id="fp-body">
-        <div class="fit-section-title">當前數值</div>
+        <div class="fit-section-title" data-i="fit_current_stats">當前數值</div>
         <div class="body-stat-grid">
           <div class="body-stat">
-            <div class="body-stat-lbl">體重</div>
+            <div class="body-stat-lbl" data-i="fit_lbl_bweight">體重</div>
             <div class="body-stat-val" id="bs-weight">72.5</div>
             <div class="body-stat-unit">kg</div>
           </div>
           <div class="body-stat">
-            <div class="body-stat-lbl">體脂率</div>
+            <div class="body-stat-lbl" data-i="fit_lbl_fat">體脂率</div>
             <div class="body-stat-val" id="bs-fat">18.2</div>
             <div class="body-stat-unit">%</div>
           </div>
@@ -1196,53 +1196,53 @@ body::after {
             <div class="body-stat-unit">—</div>
           </div>
         </div>
-        <div class="fit-section-title">更新數值</div>
+        <div class="fit-section-title" data-i="fit_update_stats">更新數值</div>
         <div style="display:flex;gap:8px;">
           <div class="fit-input-row" style="flex:1">
-            <div class="fit-lbl">體重</div>
+            <div class="fit-lbl" data-i="fit_lbl_bweight">體重</div>
             <input class="fit-inp" id="inp-weight" type="number" placeholder="72.5">
             <div class="fit-unit">kg</div>
           </div>
           <div class="fit-input-row" style="flex:1">
-            <div class="fit-lbl">體脂</div>
+            <div class="fit-lbl" data-i="fit_lbl_fat">體脂</div>
             <input class="fit-inp" id="inp-fat" type="number" placeholder="18.2">
             <div class="fit-unit">%</div>
           </div>
         </div>
         <div class="fit-input-row">
-          <div class="fit-lbl">身高</div>
+          <div class="fit-lbl" data-i="fit_lbl_height">身高</div>
           <input class="fit-inp" id="inp-height" type="number" placeholder="170">
           <div class="fit-unit">cm</div>
         </div>
-        <button class="fit-submit" onclick="logBody()">▶ 更新身體數值</button>
+        <button class="fit-submit" onclick="logBody()" data-i="fit_submit_body">▶ 更新身體數值</button>
       </div>
 
       <!-- sleep -->
       <div class="fit-log-panel" id="fp-sleep">
-        <div class="fit-section-title">本週睡眠</div>
+        <div class="fit-section-title" data-i="fit_week_sleep">本週睡眠</div>
         <div id="sleep-week">
-          <div class="sleep-row"><div class="sleep-icon">●</div><div class="sleep-info"><div class="sleep-name">週一</div><div class="sleep-bar-wrap"><div class="sleep-bar" style="width:90%"></div></div></div><div class="sleep-val">7.5h</div></div>
-          <div class="sleep-row"><div class="sleep-icon">●</div><div class="sleep-info"><div class="sleep-name">週二</div><div class="sleep-bar-wrap"><div class="sleep-bar" style="width:75%"></div></div></div><div class="sleep-val">6.2h</div></div>
-          <div class="sleep-row"><div class="sleep-icon">●</div><div class="sleep-info"><div class="sleep-name">週三</div><div class="sleep-bar-wrap"><div class="sleep-bar" style="width:100%"></div></div></div><div class="sleep-val">8.3h</div></div>
-          <div class="sleep-row"><div class="sleep-icon">▶</div><div class="sleep-info"><div class="sleep-name">今天</div><div class="sleep-bar-wrap"><div class="sleep-bar" style="width:0%"></div></div></div><div class="sleep-val" style="color:#664422">—</div></div>
+          <div class="sleep-row"><div class="sleep-icon">●</div><div class="sleep-info"><div class="sleep-name" data-i="fit_week_mon">週一</div><div class="sleep-bar-wrap"><div class="sleep-bar" style="width:90%"></div></div></div><div class="sleep-val">7.5h</div></div>
+          <div class="sleep-row"><div class="sleep-icon">●</div><div class="sleep-info"><div class="sleep-name" data-i="fit_week_tue">週二</div><div class="sleep-bar-wrap"><div class="sleep-bar" style="width:75%"></div></div></div><div class="sleep-val">6.2h</div></div>
+          <div class="sleep-row"><div class="sleep-icon">●</div><div class="sleep-info"><div class="sleep-name" data-i="fit_week_wed">週三</div><div class="sleep-bar-wrap"><div class="sleep-bar" style="width:100%"></div></div></div><div class="sleep-val">8.3h</div></div>
+          <div class="sleep-row"><div class="sleep-icon">▶</div><div class="sleep-info"><div class="sleep-name" data-i="fit_week_today">今天</div><div class="sleep-bar-wrap"><div class="sleep-bar" style="width:0%"></div></div></div><div class="sleep-val" style="color:#664422">—</div></div>
         </div>
-        <div class="fit-section-title" style="margin-top:12px;">記錄今晚睡眠</div>
+        <div class="fit-section-title" style="margin-top:12px;" data-i="fit_log_sleep">記錄今晚睡眠</div>
         <div style="display:flex;gap:8px;">
           <div class="fit-input-row" style="flex:1">
-            <div class="fit-lbl">時數</div>
+            <div class="fit-lbl" data-i="fit_lbl_hours">時數</div>
             <input class="fit-inp" id="sl-hours" type="number" placeholder="7.5" step="0.5">
             <div class="fit-unit">h</div>
           </div>
           <div class="fit-input-row" style="flex:1">
-            <div class="fit-lbl">品質</div>
+            <div class="fit-lbl" data-i="fit_lbl_quality">品質</div>
             <select class="fit-inp" id="sl-quality" style="cursor:pointer">
-              <option value="3">★★★ 好</option>
-              <option value="2">★★ 普通</option>
-              <option value="1">★ 差</option>
+              <option value="3" data-i="fit_q_good">★★★ 好</option>
+              <option value="2" data-i="fit_q_ok">★★ 普通</option>
+              <option value="1" data-i="fit_q_bad">★ 差</option>
             </select>
           </div>
         </div>
-        <button class="fit-submit" style="border-color:var(--spi);color:var(--spi);background:#0a0820;" onclick="logSleep()">▶ 記錄睡眠</button>
+        <button class="fit-submit" style="border-color:var(--spi);color:var(--spi);background:#0a0820;" onclick="logSleep()" data-i="fit_submit_sleep">▶ 記錄睡眠</button>
       </div>
     </div>
 
@@ -1252,7 +1252,7 @@ body::after {
       <div class="fit-fb-title" id="fit-fb-title">訓練完成！</div>
       <div class="fit-fb-attr" id="fit-fb-attr"></div>
       <div class="fit-fb-xp" id="fit-fb-xp">+25 XP</div>
-      <button class="fit-fb-back" onclick="resetFit()">◀ 繼續訓練</button>
+      <button class="fit-fb-back" onclick="resetFit()" data-i="fit_back">◀ 繼續訓練</button>
     </div>
   </div>
 
@@ -1281,22 +1281,32 @@ body::after {
 // ── i18n ──────────────────────────────────────────────────
 const i18n = {
   zh: {
+    // dashboard
     lbl_savings:'儲蓄率', lbl_networth:'淨值', lbl_income:'本月收入',
     lbl_expense:'消耗體力', lbl_invest:'放置收益', lbl_achievement:'成就徽章',
-    lbl_trend:'收支走勢', lbl_tx:'最近紀錄', add_btn:'新增記錄',
+    lbl_trend:'收支走勢', lbl_tx:'最近紀錄', add_btn:'記帳',
     badge1:'7天連登', badge2:'首筆投資', badge3:'存款5萬', badge4:'被動收入', badge5:'30天達標',
     tx1n:'薪資入帳', tx1c:'主動收入', tx2n:'租房費用', tx2c:'固定消耗',
     tx3n:'ETF 定期定額', tx3c:'放置型收益', tx4n:'餐飲', tx4c:'日常消耗',
-    nav1:'總覽', nav2:'記帳', nav3:'複利', nav4:'角色',
+    nav1:'總覽', nav2:'記帳', nav3:'複利', nav4:'角色', nav5:'健身',
     savings_note:'▶ 本月儲蓄率 62% — 裝備解鎖中...',
     bar_exp:'支出', bar_now:'本月',
+    wealth_label:'◆ WEALTH QUEST', body_label:'▲ BODY TECH',
+    streak_label:'連續天數', btn_train:'▲ 訓練記錄', btn_body:'● 更新身體',
+    btn_log_finance:'+ 記帳', btn_log_fit:'▲ 健身',
+    tx_fit_name:'深蹲 4×80kg×8', tx_fit_cat:'重訓 · STR+1',
+    // add entry
     page_add:'新增記錄', type_exp:'支出', type_inc:'收入', type_inv:'投資',
     enter_amt:'輸入金額', meta_date:'日期', submit_exp:'記錄消耗',
+    note_placeholder:'備註（選填）...',
+    fb_back:'繼續記帳',
+    // compound
     page_cmp:'◆ 複利試算',
     ctrl_p:'本金', ctrl_m:'每月定投', ctrl_r:'年化報酬率', ctrl_y:'年數',
     res_final:'最終資產', res_in:'投入本金', res_gain:'複利收益',
     cmp_chart_title:'複利 vs 單利', leg_comp:'複利成長', leg_simp:'單利成長',
     ms_title:'里程碑',
+    // paywall
     page_pw:'解鎖 PRO',
     trial_ended:'7天免費\n已結束',
     plan_m_name:'月訂閱', plan_m_desc:'隨時取消',
@@ -1307,24 +1317,75 @@ const i18n = {
     pw_footer:'隨時取消 · 無隱藏費用 · 資料永久保留',
     success_title:'裝備解鎖！\n歡迎成為冒險者',
     success_sub:'訂閱已啟動\n像素小人正在換上新裝備...',
+    // trial summary
+    trial_complete:'7 DAYS COMPLETE',
+    trial_done:'試用結束！\n你做到了',
+    summary_lv_lbl:'等級', summary_badge_lbl:'徽章', summary_xp_lbl:'XP',
+    trial_msg:'你的角色已成長，繼續養成冒險者吧！\n解鎖 PRO 保留所有進度 + 完整功能',
+    trial_cta:'▶ 繼續養成冒險者',
+    trial_free:'先看看舊數據',
+    // fitness screen
+    fit_module:'BODY TECH',
+    fit_streak:'▶ 連續訓練 3 天 — 燃脂火焰解鎖！',
+    fit_streak_lbl:'連續天數',
+    ftab_strength:'重訓', ftab_cardio:'有氧', ftab_body:'身體', ftab_sleep:'睡眠',
+    fit_today_strength:'今日重訓紀錄',
+    fit_add_exercise:'新增動作',
+    fit_lbl_name:'動作名稱', fit_lbl_sets:'組數', fit_lbl_weight:'重量', fit_lbl_reps:'次數',
+    fit_ph_name:'深蹲、硬舉...', fit_ph_sets:'4', fit_ph_weight:'80', fit_ph_reps:'8',
+    fit_submit_strength:'▶ 記錄重訓',
+    fit_today_cardio:'今日有氧紀錄',
+    fit_add_cardio:'新增有氧',
+    fit_lbl_type:'類型', fit_lbl_min:'時間', fit_lbl_km:'距離', fit_lbl_cal:'消耗',
+    fit_ph_type:'慢跑、騎車、游泳...', fit_ph_min:'30', fit_ph_km:'5', fit_ph_cal:'自動估算或手填',
+    fit_submit_cardio:'▶ 記錄有氧',
+    fit_current_stats:'當前數值',
+    fit_update_stats:'更新數值',
+    fit_lbl_bweight:'體重', fit_lbl_fat:'體脂', fit_lbl_height:'身高',
+    fit_ph_bweight:'72.5', fit_ph_fat:'18.2', fit_ph_height:'170',
+    fit_submit_body:'▶ 更新身體數值',
+    fit_week_sleep:'本週睡眠',
+    fit_log_sleep:'記錄今晚睡眠',
+    fit_lbl_hours:'時數', fit_lbl_quality:'品質',
+    fit_q_good:'★★★ 好', fit_q_ok:'★★ 普通', fit_q_bad:'★ 差',
+    fit_submit_sleep:'▶ 記錄睡眠',
+    fit_back:'◀ 繼續訓練',
+    fit_week_mon:'週一', fit_week_tue:'週二', fit_week_wed:'週三', fit_week_today:'今天',
+    // feedback dynamic
+    fb_strength_done:'訓練完成！', fb_cardio_done:'有氧完成！',
+    fb_body_done:'身體數值\n已更新！', fb_sleep_done:'恢復完成！',
+    fb_recovering:'恢復中',
+    // levelup toast
+    levelup_msg:'▲ LV.{n} 升級！解鎖新徽章！',
+    badge_unlock:'新徽章解鎖！',
   },
   en: {
+    // dashboard
     lbl_savings:'Savings', lbl_networth:'Net Worth', lbl_income:'Income',
     lbl_expense:'HP Spent', lbl_invest:'Passive EXP', lbl_achievement:'Achievements',
-    lbl_trend:'Cash Flow', lbl_tx:'Recent Logs', add_btn:'Add Entry',
+    lbl_trend:'Cash Flow', lbl_tx:'Recent Logs', add_btn:'Log',
     badge1:'7-Day Login', badge2:'First Invest', badge3:'50K Saved', badge4:'Passive Inc.', badge5:'30-Day Goal',
     tx1n:'Salary', tx1c:'Active Income', tx2n:'Rent', tx2c:'Fixed Cost',
     tx3n:'ETF DCA', tx3c:'Passive Gain', tx4n:'Dining', tx4c:'Daily Cost',
-    nav1:'Home', nav2:'Log', nav3:'Compound', nav4:'Avatar',
+    nav1:'Home', nav2:'Log', nav3:'Compound', nav4:'Avatar', nav5:'Fitness',
     savings_note:'▶ Savings rate 62% — Equipment unlocking...',
     bar_exp:'Exp', bar_now:'Now',
+    wealth_label:'◆ WEALTH QUEST', body_label:'▲ BODY TECH',
+    streak_label:'Streak', btn_train:'▲ Train Log', btn_body:'● Update Body',
+    btn_log_finance:'+ Finance', btn_log_fit:'▲ Fitness',
+    tx_fit_name:'Squat 4×80kg×8', tx_fit_cat:'Strength · STR+1',
+    // add entry
     page_add:'Add Entry', type_exp:'Expense', type_inc:'Income', type_inv:'Invest',
     enter_amt:'ENTER AMOUNT', meta_date:'Date', submit_exp:'Log Expense',
+    note_placeholder:'Note (optional)...',
+    fb_back:'Keep Logging',
+    // compound
     page_cmp:'◆ Compound Calc',
     ctrl_p:'Principal', ctrl_m:'Monthly DCA', ctrl_r:'Annual Return', ctrl_y:'Years',
     res_final:'Final Asset', res_in:'Total In', res_gain:'Compound Gain',
     cmp_chart_title:'Compound vs Simple', leg_comp:'Compound', leg_simp:'Simple',
     ms_title:'Milestones',
+    // paywall
     page_pw:'Unlock PRO',
     trial_ended:'7-Day Trial\nEnded',
     plan_m_name:'Monthly', plan_m_desc:'Cancel anytime',
@@ -1335,6 +1396,47 @@ const i18n = {
     pw_footer:'Cancel anytime · No hidden fees · Data kept',
     success_title:'Gear Unlocked!\nWelcome, Adventurer',
     success_sub:'Subscription active\nPixel avatar changing outfit...',
+    // trial summary
+    trial_complete:'7 DAYS COMPLETE',
+    trial_done:'Trial Done!\nYou Made It',
+    summary_lv_lbl:'Level', summary_badge_lbl:'Badges', summary_xp_lbl:'XP',
+    trial_msg:'Your avatar has leveled up! Unlock PRO to keep all progress + full features.',
+    trial_cta:'▶ Continue Adventure',
+    trial_free:'Browse old data',
+    // fitness screen
+    fit_module:'BODY TECH',
+    fit_streak:'▶ 3-day streak — Fat Burn unlocked!',
+    fit_streak_lbl:'Streak',
+    ftab_strength:'Strength', ftab_cardio:'Cardio', ftab_body:'Body', ftab_sleep:'Sleep',
+    fit_today_strength:'Today\'s Strength Log',
+    fit_add_exercise:'Add Exercise',
+    fit_lbl_name:'Exercise', fit_lbl_sets:'Sets', fit_lbl_weight:'Weight', fit_lbl_reps:'Reps',
+    fit_ph_name:'Squat, Deadlift...', fit_ph_sets:'4', fit_ph_weight:'80', fit_ph_reps:'8',
+    fit_submit_strength:'▶ Log Strength',
+    fit_today_cardio:'Today\'s Cardio Log',
+    fit_add_cardio:'Add Cardio',
+    fit_lbl_type:'Type', fit_lbl_min:'Time', fit_lbl_km:'Dist.', fit_lbl_cal:'Burned',
+    fit_ph_type:'Run, Bike, Swim...', fit_ph_min:'30', fit_ph_km:'5', fit_ph_cal:'Auto or manual',
+    fit_submit_cardio:'▶ Log Cardio',
+    fit_current_stats:'Current Stats',
+    fit_update_stats:'Update Stats',
+    fit_lbl_bweight:'Weight', fit_lbl_fat:'Body Fat', fit_lbl_height:'Height',
+    fit_ph_bweight:'72.5', fit_ph_fat:'18.2', fit_ph_height:'170',
+    fit_submit_body:'▶ Update Body Stats',
+    fit_week_sleep:'This Week\'s Sleep',
+    fit_log_sleep:'Log Tonight\'s Sleep',
+    fit_lbl_hours:'Hours', fit_lbl_quality:'Quality',
+    fit_q_good:'★★★ Good', fit_q_ok:'★★ OK', fit_q_bad:'★ Poor',
+    fit_submit_sleep:'▶ Log Sleep',
+    fit_back:'◀ Keep Training',
+    fit_week_mon:'Mon', fit_week_tue:'Tue', fit_week_wed:'Wed', fit_week_today:'Today',
+    // feedback dynamic
+    fb_strength_done:'Training Done!', fb_cardio_done:'Cardio Done!',
+    fb_body_done:'Body Stats\nUpdated!', fb_sleep_done:'Recovery Done!',
+    fb_recovering:'Recovering',
+    // levelup toast
+    levelup_msg:'▲ LV.{n} Up! New badge unlocked!',
+    badge_unlock:'Badge Unlocked!',
   }
 };
 
@@ -1344,14 +1446,28 @@ function setLang(l, btn) {
   lang = l;
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
+  // data-i elements
   document.querySelectorAll('[data-i]').forEach(el => {
     const key = el.getAttribute('data-i');
     if (i18n[l][key] !== undefined) el.textContent = i18n[l][key];
   });
-  document.getElementById('note-inp').placeholder = l === 'zh' ? '備註（選填）...' : 'Note (optional)...';
+  // input placeholders with data-ph-zh / data-ph-en
+  document.querySelectorAll('[data-ph-zh]').forEach(el => {
+    el.placeholder = l === 'zh' ? el.getAttribute('data-ph-zh') : el.getAttribute('data-ph-en');
+  });
+  // note input placeholder
+  const noteInp = document.getElementById('note-inp');
+  if (noteInp) noteInp.placeholder = i18n[l].note_placeholder;
+  // fitness nav label
+  document.querySelectorAll('.fit-bottomnav .nav-item span').forEach(s => {
+    if (s.getAttribute('data-i') === undefined && s.textContent.trim() === '健身') {
+      s.textContent = l === 'zh' ? '健身' : 'Fit';
+    }
+  });
   updateSubmitBtn();
   renderChips();
   calcCmp();
+  renderAchievements();
 }
 
 // ── SCREEN NAV ────────────────────────────────────────────
@@ -1441,7 +1557,7 @@ function updateXPBar(flashAmt) {
 function showLevelUp(lv) {
   const el = document.getElementById('levelup-toast');
   if (!el) return;
-  el.textContent = '▲ LV.' + lv + ' 升級！解鎖新徽章！';
+  el.textContent = i18n[lang].levelup_msg.replace('{n}', lv);
   el.style.opacity = '1'; el.style.transform = 'translateX(-50%) translateY(0)';
   fireConfetti();
   setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateX(-50%) translateY(-20px)'; }, 2500);
@@ -1473,7 +1589,7 @@ function fireConfetti() {
 function showBadgeToast(icon, name) {
   const el = document.getElementById('badge-toast');
   if (!el) return;
-  el.innerHTML = `新徽章解鎖！<br>${icon} ${name}`;
+  el.innerHTML = `${i18n[lang].badge_unlock}<br>${icon} ${name}`;
   el.style.opacity = '1'; el.style.transform = 'translateX(-50%) translateY(0)';
   fireConfetti();
   setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateX(-50%) translateY(20px)'; }, 2800);
@@ -1658,7 +1774,7 @@ function calcCmp() {
   if (lvPred) {
     lvPred.innerHTML = lang==='zh'
       ? `${y} 年後角色預測達 <strong style="color:var(--gold)">LV.${projLv}</strong>　解鎖「<span style="color:var(--pg)">傳說裝備</span>」`
-      : `In ${y} yr, avatar projects to <strong style="color:var(--gold)">LV.${projLv}</strong> — unlock <span style="color:var(--pg)">Legend Gear</span>`;
+      : `In ${y} yr, avatar projected at <strong style="color:var(--gold)">LV.${projLv}</strong> — unlock <span style="color:var(--pg)">Legend Gear</span>`;
   }
 
   // chart
@@ -1824,18 +1940,30 @@ function logStrength() {
   document.getElementById('ex-weight').value = '';
   document.getElementById('ex-reps').value = '';
   if (parseFloat(weight) >= 100 && name.includes('深蹲')) { achievements[7].done = true; renderAchievements(); }
-  showFitFeedback('▲', `${name}\n訓練完成！`, [`STR +1`, `VIT +1`, `體積 ${Math.round(vol/1000*10)/10}T`], `+${xp} XP`);
+  const detail = lang==='zh'
+    ? `${sets}組 × ${weight}kg × ${reps}次`
+    : `${sets}x × ${weight}kg × ${reps}reps`;
+  const item = document.createElement('div');
+  item.className = 'exercise-item';
+  item.innerHTML = `<div class="ex-name">${name}</div><div class="ex-detail">${detail}</div><div class="ex-xp">+${xp}XP</div>`;
+  document.getElementById('ex-list').appendChild(item);
+  document.getElementById('ex-name').value = '';
+  document.getElementById('ex-sets').value = '';
+  document.getElementById('ex-weight').value = '';
+  document.getElementById('ex-reps').value = '';
+  const volLabel = lang==='zh' ? `體積 ${Math.round(vol/1000*10)/10}T` : `Vol ${Math.round(vol/1000*10)/10}T`;
+  showFitFeedback('▲', `${name}\n${i18n[lang].fb_strength_done}`, [`STR +1`, `VIT +1`, volLabel], `+${xp} XP`);
 }
 
 function logCardio() {
-  const type = document.getElementById('c-type').value || '有氧';
+  const type = document.getElementById('c-type').value || (lang==='zh'?'有氧':'Cardio');
   const min = document.getElementById('c-min').value || '30';
   const km = document.getElementById('c-km').value || '0';
   const cal = document.getElementById('c-cal').value || Math.round(parseInt(min) * 7);
   fitAttrs.agi = Math.min(99, fitAttrs.agi + 1);
   fitAttrs.vit = Math.min(99, fitAttrs.vit + 1);
   updateAttrs();
-  showFitFeedback('◆', `${type}\n有氧完成！`, [`AGI +1`, `VIT +1`, `${cal} kcal`], `+${Math.round(parseInt(min)/2)} XP`);
+  showFitFeedback('◆', `${type}\n${i18n[lang].fb_cardio_done}`, [`AGI +1`, `VIT +1`, `${cal} kcal`], `+${Math.round(parseInt(min)/2)} XP`);
 }
 
 function logBody() {
@@ -1852,7 +1980,8 @@ function logBody() {
   fitAttrs.vit = Math.min(99, fitAttrs.vit + 1);
   if (strBonus) fitAttrs.str = Math.min(99, fitAttrs.str + 1);
   updateAttrs();
-  showFitFeedback('●', '身體數值\n已更新！', [`VIT +1`, w ? `體重 ${parseFloat(w).toFixed(1)}kg` : '已記錄'], '+5 XP');
+  const wLabel = w ? (lang==='zh'?`體重 ${parseFloat(w).toFixed(1)}kg`:`${parseFloat(w).toFixed(1)}kg`) : (lang==='zh'?'已記錄':'Logged');
+  showFitFeedback('●', i18n[lang].fb_body_done, [`VIT +1`, wLabel], '+5 XP');
 }
 
 function logSleep() {
@@ -1866,7 +1995,10 @@ function logSleep() {
   const todayVal = document.querySelector('#sleep-week .sleep-row:last-child .sleep-val');
   if (todayBar) { todayBar.style.width = pct + '%'; }
   if (todayVal) { todayVal.textContent = h + 'h'; todayVal.style.color = ''; }
-  showFitFeedback('◆', `睡眠 ${h}h\n恢復完成！`, [spiBonus ? 'SPI +1' : '恢復中', `品質 ${'★'.repeat(q)}`], `+${spiBonus ? 15 : 8} XP`);
+  const qualityLabel = lang==='zh' ? `品質 ${'★'.repeat(q)}` : `Quality ${'★'.repeat(q)}`;
+  showFitFeedback('◆', `${lang==='zh'?'睡眠':'Sleep'} ${h}h\n${i18n[lang].fb_sleep_done}`,
+    [spiBonus ? 'SPI +1' : i18n[lang].fb_recovering, qualityLabel],
+    `+${spiBonus ? 15 : 8} XP`);
 }
 
 // ── INIT ──────────────────────────────────────────────────
