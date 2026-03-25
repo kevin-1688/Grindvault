@@ -2221,7 +2221,9 @@ function hideCompoundGate() {
   if (cg) cg.style.display = 'none';
 }
 
-// ── AI REPORT (Claude API powered) ───────────────────────
+// ── AI REPORT (via Vercel serverless — API key stays server-side) ─
+const API_BASE = 'https://grindvault.vercel.app'; // ← 部署後換成你的 Vercel 網址
+
 async function generateAIReport() {
   if (!isPro) { gotoScreen('s-paywall'); return; }
   const btn = document.getElementById('ai-btn-text');
@@ -2233,30 +2235,39 @@ async function generateAIReport() {
   const income = document.getElementById('val-income-live')?.textContent || '52,000';
   const expense = document.getElementById('val-expense-live')?.textContent || '19,800';
   const invest = document.getElementById('val-invest-live')?.textContent || '1,240';
-  const lv = getLevel();
-  const xp = playerXP;
-
-  const prompt = lang==='zh'
-    ? `你是一個遊戲化財務教練。用戶本月收入 NT$${income}，支出 NT$${expense}，投資收益 NT$${invest}。角色等級 LV.${lv}，累積 ${xp} XP。請用像素 RPG 遊戲的語言（100字內），給出3點具體財務建議，每點用「▶」開頭，語氣要像遊戲裡的導師。`
-    : `You are a gamified finance coach. User's monthly income: NT$${income}, expense: NT$${expense}, investment gain: NT$${invest}. Avatar LV.${lv}, ${xp} XP. In pixel RPG style (under 100 words), give 3 specific finance tips, each starting with "▶", tone like an in-game mentor.`;
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch(`${API_BASE}/api/report`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 300,
-        messages: [{ role: 'user', content: prompt }]
-      })
+        income, expense, invest,
+        level: getLevel(),
+        xp: playerXP,
+        lang,
+      }),
     });
+
+    if (!res.ok) throw new Error('API error ' + res.status);
     const data = await res.json();
-    const text = data.content?.[0]?.text || (lang==='zh'?'分析失敗，請稍後再試。':'Analysis failed, try again.');
+    const text = data.report || (lang==='zh'?'分析失敗，請稍後再試。':'Analysis failed.');
     output.innerHTML = `<div class="ai-report-card">${text.replace(/\n/g,'<br>')}</div>`;
     if (btn) btn.textContent = lang==='zh' ? '重新生成報告' : 'Regenerate Report';
   } catch(e) {
-    output.innerHTML = `<div style="font-size:8px;color:var(--red);padding:8px;">${lang==='zh'?'連線失敗，請檢查網路。':'Connection failed.'}</div>`;
+    console.error('AI report error:', e);
+    output.innerHTML = `<div style="font-size:8px;color:var(--red);padding:8px;">${lang==='zh'?'連線失敗，請檢查網路。':'Connection failed. Check network.'}</div>`;
     if (btn) btn.textContent = lang==='zh' ? '重試' : 'Retry';
+  }
+}
+
+// ── PRO STATUS CHECK (via Vercel serverless) ──────────────
+async function checkProFromServer(email) {
+  try {
+    const res = await fetch(`${API_BASE}/api/check-pro?email=${encodeURIComponent(email)}`);
+    const data = await res.json();
+    return data.is_pro === true;
+  } catch {
+    return false;
   }
 }
 
@@ -2289,3 +2300,4 @@ if ('serviceWorker' in navigator) {
 </script>
 </body>
 </html>
+
