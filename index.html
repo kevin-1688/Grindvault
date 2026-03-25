@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>FINGROW v1.0</title>
+<title>GRINDVAULT v1.0</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -420,7 +420,7 @@ input[type=range] { width: 100%; accent-color: var(--pg); cursor: pointer; }
 }
 
 /* ══════════════════════════════════════════════════════════
-   FINGROW ANIMATION SYSTEM
+   GRINDVAULT ANIMATION SYSTEM
 ══════════════════════════════════════════════════════════ */
 
 /* ── 1. SCANLINES background overlay ──────────────────── */
@@ -581,7 +581,7 @@ body::after {
 <!-- ═══════════════════════════════════════════════════════ -->
 <div class="screen active" id="s-home">
   <div class="topbar">
-    <div class="logo">FIN<span>GROW</span></div>
+    <div class="logo">GRIND<span>VAULT</span></div>
     <div class="trial-badge" id="trialBadge" onclick="gotoScreen('s-paywall')">▶ TRIAL DAY 3/7</div>
     <div class="lang-row">
       <button class="lang-btn active" onclick="setLang('zh',this)">中</button>
@@ -1028,7 +1028,7 @@ body::after {
 <!-- ═══════════════════════════════════════════════════════ -->
 <div class="screen" id="s-fit">
   <div class="topbar" style="background:#0d0500;border-bottom:2px solid #2a1a0a;">
-    <div class="logo" style="color:var(--fire)">FIN<span style="color:var(--amber)">GROW</span></div>
+    <div class="logo" style="color:var(--fire)">GRIND<span style="color:var(--amber)">VAULT</span></div>
     <div style="font-family:'Press Start 2P',monospace;font-size:8px;color:var(--amber);" data-i="fit_module">BODY TECH</div>
     <div class="lang-row">
       <button class="lang-btn active" onclick="setLang('zh',this)" style="border-color:#664422;color:#664422;">中</button>
@@ -1843,8 +1843,8 @@ function selPlan(p) {
   document.getElementById('cta-lbl').textContent = i18n[lang][p==='y'?'cta_y':'cta_m'];
 }
 const GUMROAD = {
-  monthly: 'https://kaiwen4.gumroad.com/l/fingrow?variant=monthly&utm_source=app&utm_medium=paywall',
-  yearly:  'https://kaiwen4.gumroad.com/l/fingrow?variant=yearly&utm_source=app&utm_medium=paywall',
+  monthly: 'https://kaiwen4.gumroad.com/l/grindvault?variant=monthly&utm_source=app&utm_medium=paywall',
+  yearly:  'https://kaiwen4.gumroad.com/l/grindvault?variant=yearly&utm_source=app&utm_medium=paywall',
 };
 
 function showTrialSummary() {
