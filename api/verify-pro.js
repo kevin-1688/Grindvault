@@ -1,46 +1,54 @@
-// Gumroad Webhook — called when a sale is completed
-// Gumroad sends a POST with sale data to this endpoint
-// We verify it's legit then mark the user as PRO in Supabase (add later)
+// api/load.js
+// Loads all user data from Supabase for cloud sync
+// Called on login to restore data across devices
+
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_SECRET_KEY = process.env.SUPABASE_SECRET_KEY;
+
+async function supabase(path) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1${path}`, {
+    headers: {
+      'apikey': SUPABASE_SECRET_KEY,
+      'Authorization': `Bearer ${SUPABASE_SECRET_KEY}`,
+    },
+  });
+  if (!res.ok) throw new Error(`Supabase ${res.status}`);
+  return res.json();
+}
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+  res.setHeader('Access-Control-Allow-Origin', 'https://kevin-1688.github.io');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
+
+  const { user_id } = req.query;
+  if (!user_id) return res.status(400).json({ error: 'Missing user_id' });
 
   try {
-    const {
-      seller_id,
-      product_permalink,
-      email,
-      sale_id,
-      refunded,
-    } = req.body;
+    // Load user profile (is_pro status)
+    const users = await supabase(`/users?id=eq.${user_id}&select=*`);
+    const user = users[0] || null;
 
-    // 1. Verify it's from your Gumroad account
-    if (seller_id !== process.env.GUMROAD_SELLER_ID) {
-      console.warn('Invalid seller_id:', seller_id);
-      return res.status(401).json({ error: 'Unauthorized' });
-    }
+    // Load last 50 transactions
+    const transactions = await supabase(
+      `/transactions?user_id=eq.${user_id}&order=created_at.desc&limit=50&select=*`
+    );
 
-    // 2. Verify it's for your product
-    if (product_permalink !== 'grindvault') {
-      return res.status(400).json({ error: 'Wrong product' });
-    }
+    // Load last 30 fitness logs
+    const fitness = await supabase(
+      `/fitness_logs?user_id=eq.${user_id}&order=created_at.desc&limit=30&select=*`
+    );
 
-    // 3. Handle refund — revoke PRO
-    if (refunded) {
-      console.log(`Refund for ${email} — revoke PRO`);
-      // TODO: update Supabase users set is_pro = false where email = email
-      return res.status(200).json({ status: 'refund_processed' });
-    }
-
-    // 4. Grant PRO
-    console.log(`New PRO sale: ${email} (${sale_id})`);
-    // TODO: update Supabase users set is_pro = true where email = email
-    // For now, log it. Add Supabase integration in next step.
-
-    return res.status(200).json({ status: 'ok', email, sale_id });
+    return res.status(200).json({
+      user,
+      transactions,
+      fitness,
+    });
 
   } catch (err) {
-    console.error('Webhook error:', err);
-    return res.status(500).json({ error: 'Internal server error' });
+    console.error('load error:', err.message);
+    return res.status(500).json({ error: err.message });
   }
 }
