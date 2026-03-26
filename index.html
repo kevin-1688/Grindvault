@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GRINDVAULT v1.0</title>
 
 <!-- PWA -->
@@ -115,7 +115,7 @@ html, body {
   color: var(--pg);
   font-family: 'Space Mono', monospace;
   min-height: 100vh;
-  max-width: 420px;
+  max-width: 480px;
   margin: 0 auto;
   position: relative;
   overflow-x: hidden;
@@ -131,25 +131,25 @@ html, body {
   padding: 10px 16px; border-bottom: 2px solid var(--border);
   background: var(--panel2); flex-shrink: 0; position: sticky; top: 0; z-index: 10;
 }
-.logo { font-family: 'Press Start 2P', monospace; font-size: 11px; color: var(--pg); letter-spacing: 2px; }
+.logo { font-family: 'Press Start 2P', monospace; font-size: 13px; color: var(--pg); letter-spacing: 2px; }
 .logo span { color: var(--gold); }
 .trial-badge {
-  font-size: 8px; color: var(--gold); border: 1px solid var(--gold);
+  font-size: 12px; color: var(--gold); border: 1px solid var(--gold);
   padding: 3px 8px; animation: blink 1.5s step-end infinite; cursor: pointer;
 }
 .trial-badge:hover { background: #1a1a00; }
 .lang-row { display: flex; gap: 4px; }
 .lang-btn {
-  font-family: 'Space Mono', monospace; font-size: 9px; background: none;
+  font-family: 'Space Mono', monospace; font-size: 13px; background: none;
   border: 1px solid var(--dim); color: var(--dim); padding: 2px 7px; cursor: pointer; transition: all 0.1s;
 }
 .lang-btn.active { border-color: var(--pg); color: var(--pg); }
 .back-btn {
   background: none; border: 1px solid var(--dim); color: var(--dim);
-  font-family: 'Space Mono', monospace; font-size: 9px; padding: 3px 8px; cursor: pointer; transition: all .15s;
+  font-family: 'Space Mono', monospace; font-size: 13px; padding: 3px 8px; cursor: pointer; transition: all .15s;
 }
 .back-btn:hover { border-color: var(--pg); color: var(--pg); }
-.page-title { font-family: 'Press Start 2P', monospace; font-size: 9px; color: var(--pg); }
+.page-title { font-family: 'Press Start 2P', monospace; font-size: 13px; color: var(--pg); }
 
 /* ── BOTTOMNAV ─────────────────────────── */
 .bottomnav {
@@ -159,7 +159,7 @@ html, body {
 .nav-item {
   flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px;
   padding: 10px 0 8px; cursor: pointer; border-top: 2px solid transparent;
-  transition: all 0.15s; font-size: 8px; color: var(--dim); background: none; border-left: none; border-right: none; border-bottom: none;
+  transition: all 0.15s; font-size: 12px; color: var(--dim); background: none; border-left: none; border-right: none; border-bottom: none;
   font-family: 'Space Mono', monospace;
 }
 .nav-item.active { border-top-color: var(--pg); color: var(--pg); }
@@ -174,18 +174,18 @@ html, body {
   gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
 }
 .m-card { background: var(--panel); padding: 12px 10px; }
-.m-label { font-size: 7px; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
-.m-val { font-family: 'Press Start 2P', monospace; font-size: 10px; margin-bottom: 2px; }
+.m-label { font-size: 13px; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.m-val { font-family: 'Press Start 2P', monospace; font-size: 12px; margin-bottom: 2px; }
 .m-val.gold { color: var(--gold); }
 .m-val.red  { color: var(--red); }
 .m-val.blue { color: var(--blue); }
 .m-val.pg   { color: var(--pg); }
-.m-sub { font-size: 8px; color: var(--dim); }
+.m-sub { font-size: 12px; color: var(--dim); }
 
 /* ── SECTION ───────────────────────────── */
 .section { padding: 14px 16px; border-top: 1px solid var(--border); }
 .section-title {
-  font-size: 8px; color: var(--dim); text-transform: uppercase; letter-spacing: 2px;
+  font-size: 12px; color: var(--dim); text-transform: uppercase; letter-spacing: 2px;
   margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
 }
 .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
@@ -197,13 +197,13 @@ html, body {
 }
 .avatar { width: 52px; height: 52px; flex-shrink: 0; image-rendering: pixelated; }
 .hero-right { flex: 1; }
-.username { font-family: 'Press Start 2P', monospace; font-size: 8px; color: var(--gold); margin-bottom: 6px; }
+.username { font-family: 'Press Start 2P', monospace; font-size: 12px; color: var(--gold); margin-bottom: 6px; }
 .xpbar-wrap { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
-.xpbar-lbl { font-size: 8px; color: var(--dim); min-width: 30px; }
+.xpbar-lbl { font-size: 12px; color: var(--dim); min-width: 30px; }
 .xpbar { flex: 1; height: 8px; background: #1a1a1a; border: 1px solid var(--border); overflow: hidden; }
 .xpbar-fill { height: 100%; background: var(--pg); position: relative; transition: width 0.8s ease; }
 .xpbar-fill::after { content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 2px; background: #fff; opacity: 0.5; animation: shimmer 1s ease-in-out infinite; }
-.xpbar-val { font-size: 8px; color: var(--pg); min-width: 42px; text-align: right; }
+.xpbar-val { font-size: 12px; color: var(--pg); min-width: 42px; text-align: right; }
 @keyframes shimmer { 0%,100%{opacity:.2} 50%{opacity:.8} }
 @keyframes blink { 50%{opacity:.2} }
 
@@ -215,7 +215,7 @@ html, body {
 }
 .badge.unlocked { border-color: var(--gold); }
 .badge-icon { font-size: 15px; }
-.badge-name { font-size: 7px; color: var(--dim); text-align: center; }
+.badge-name { font-size: 13px; color: var(--dim); text-align: center; }
 .badge.unlocked .badge-name { color: var(--gold); }
 
 /* ── MINI BAR CHART ─────────────────────── */
@@ -224,7 +224,7 @@ html, body {
 .bar { width: 100%; background: var(--pg); opacity: 0.7; min-height: 4px; }
 .bar.cur { opacity: 1; }
 .bar.exp { background: var(--red); }
-.bar-lbl { font-size: 6px; color: var(--dim); }
+.bar-lbl { font-size: 12px; color: var(--dim); }
 
 /* ── TX LIST ────────────────────────────── */
 .tx-list { display: flex; flex-direction: column; gap: 6px; }
@@ -239,9 +239,9 @@ html, body {
 .tx.inv { border-left-color: var(--blue); }
 .tx-icon { font-size: 13px; width: 16px; text-align: center; }
 .tx-info { flex: 1; }
-.tx-name { font-size: 10px; color: var(--text); margin-bottom: 1px; }
-.tx-cat { font-size: 8px; color: var(--dim); }
-.tx-amt { font-family: 'Press Start 2P', monospace; font-size: 9px; }
+.tx-name { font-size: 12px; color: var(--text); margin-bottom: 1px; }
+.tx-cat { font-size: 12px; color: var(--dim); }
+.tx-amt { font-family: 'Press Start 2P', monospace; font-size: 13px; }
 .tx-amt.neg { color: var(--red); }
 .tx-amt.pos { color: var(--pg); }
 .tx-amt.inv { color: var(--blue); }
@@ -250,20 +250,20 @@ html, body {
   display: flex; align-items: center; justify-content: center; gap: 8px;
   width: 100%; margin-top: 8px; padding: 10px;
   background: none; border: 1px dashed var(--dim); color: var(--dim);
-  font-family: 'Space Mono', monospace; font-size: 10px; cursor: pointer; transition: all .2s;
+  font-family: 'Space Mono', monospace; font-size: 12px; cursor: pointer; transition: all .2s;
 }
 .add-btn:hover { border-color: var(--pg); color: var(--pg); }
 
 .savings-note {
   display: inline-flex; align-items: center; gap: 6px;
   background: #001a00; border: 1px solid var(--pg);
-  padding: 5px 10px; font-size: 8px; color: var(--pg); margin-top: 8px;
+  padding: 5px 10px; font-size: 12px; color: var(--pg); margin-top: 8px;
 }
 
 /* ── ADD ENTRY ──────────────────────────── */
 .type-row { display: flex; gap: 1px; background: var(--border); border-bottom: 1px solid var(--border); }
 .type-btn {
-  flex: 1; padding: 11px 0; text-align: center; font-size: 9px;
+  flex: 1; padding: 11px 0; text-align: center; font-size: 13px;
   font-family: 'Space Mono', monospace; cursor: pointer; background: var(--panel);
   border: none; color: var(--dim); transition: all .15s;
 }
@@ -272,11 +272,11 @@ html, body {
 .type-btn.a-inv { background: #00102a; color: var(--blue); }
 
 .amt-pad { padding: 20px 16px 14px; border-bottom: 1px solid var(--border); background: var(--panel2); text-align: center; }
-.amt-label { font-size: 8px; color: var(--dim); margin-bottom: 8px; letter-spacing: 2px; }
+.amt-label { font-size: 12px; color: var(--dim); margin-bottom: 8px; letter-spacing: 2px; }
 .amt-display { font-family: 'Press Start 2P', monospace; font-size: 28px; color: var(--red); letter-spacing: 2px; min-height: 40px; transition: color .2s; }
 .amt-display.ic { color: var(--pg); }
 .amt-display.iv { color: var(--blue); }
-.amt-cur { font-size: 8px; color: var(--dim); margin-top: 4px; }
+.amt-cur { font-size: 12px; color: var(--dim); margin-top: 4px; }
 
 .numpad {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
@@ -290,18 +290,18 @@ html, body {
 .num-btn:active { background: #1c1c1c; }
 .num-btn.del { color: var(--dim); font-size: 12px; }
 .num-btn.zero { grid-column: span 2; }
-.num-btn.ok { background: #001a00; color: var(--pg); font-size: 11px; }
+.num-btn.ok { background: #001a00; color: var(--pg); font-size: 13px; }
 .num-btn.ok:active { background: #003300; }
 
 .meta-sec { padding: 12px 16px; }
 .meta-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
-.meta-lbl { font-size: 9px; color: var(--dim); min-width: 48px; }
-.meta-val { flex: 1; font-size: 10px; color: var(--text); }
-.meta-arr { font-size: 10px; color: var(--dim); }
+.meta-lbl { font-size: 13px; color: var(--dim); min-width: 48px; }
+.meta-val { flex: 1; font-size: 12px; color: var(--text); }
+.meta-arr { font-size: 12px; color: var(--dim); }
 
 .chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 0; border-bottom: 1px solid var(--border); }
 .chip {
-  font-size: 9px; padding: 4px 10px; border: 1px solid var(--dim); color: var(--dim);
+  font-size: 13px; padding: 4px 10px; border: 1px solid var(--dim); color: var(--dim);
   cursor: pointer; transition: all .15s; background: none; font-family: 'Space Mono', monospace;
 }
 .chip.s-exp { border-color: var(--red); color: var(--red); background: #1a0000; }
@@ -310,7 +310,7 @@ html, body {
 
 .note-inp {
   width: 100%; background: var(--panel2); border: 1px solid var(--border); border-left: 3px solid var(--dim);
-  color: var(--text); font-family: 'Space Mono', monospace; font-size: 10px;
+  color: var(--text); font-family: 'Space Mono', monospace; font-size: 12px;
   padding: 9px 12px; outline: none; transition: border-color .2s; margin: 12px 0;
 }
 .note-inp:focus { border-left-color: var(--pg); }
@@ -319,7 +319,7 @@ html, body {
 .submit-btn {
   display: flex; align-items: center; justify-content: center; gap: 10px;
   width: 100%; padding: 14px; background: #001a00; border: 2px solid var(--pg);
-  color: var(--pg); font-family: 'Press Start 2P', monospace; font-size: 10px;
+  color: var(--pg); font-family: 'Press Start 2P', monospace; font-size: 12px;
   cursor: pointer; letter-spacing: 2px; transition: all .15s;
 }
 .submit-btn:hover { background: #003300; }
@@ -330,36 +330,36 @@ html, body {
 .feedback-wrap.show { display: flex; }
 .fb-icon { font-size: 40px; animation: bounce .5s ease infinite alternate; }
 @keyframes bounce { to { transform: translateY(-8px); } }
-.fb-msg { font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--pg); line-height: 1.9; }
-.fb-sub { font-size: 8px; color: var(--dim); line-height: 2; }
-.fb-xp { font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--gold); margin-top: 6px; }
-.fb-back { margin-top: 10px; padding: 10px 20px; background: none; border: 1px solid var(--dim); color: var(--dim); font-family: 'Space Mono', monospace; font-size: 9px; cursor: pointer; transition: all .15s; }
+.fb-msg { font-family: 'Press Start 2P', monospace; font-size: 12px; color: var(--pg); line-height: 1.9; }
+.fb-sub { font-size: 12px; color: var(--dim); line-height: 2; }
+.fb-xp { font-family: 'Press Start 2P', monospace; font-size: 12px; color: var(--gold); margin-top: 6px; }
+.fb-back { margin-top: 10px; padding: 10px 20px; background: none; border: 1px solid var(--dim); color: var(--dim); font-family: 'Space Mono', monospace; font-size: 13px; cursor: pointer; transition: all .15s; }
 .fb-back:hover { border-color: var(--pg); color: var(--pg); }
 
 /* ── COMPOUND ───────────────────────────── */
 .ctrl-sec { padding: 16px; border-bottom: 1px solid var(--border); }
 .ctrl-row { margin-bottom: 14px; }
-.ctrl-lbl { font-size: 8px; color: var(--dim); letter-spacing: 1px; margin-bottom: 6px; display: flex; justify-content: space-between; }
-.ctrl-lbl span { color: var(--text); font-size: 10px; }
+.ctrl-lbl { font-size: 12px; color: var(--dim); letter-spacing: 1px; margin-bottom: 6px; display: flex; justify-content: space-between; }
+.ctrl-lbl span { color: var(--text); font-size: 12px; }
 input[type=range] { width: 100%; accent-color: var(--pg); cursor: pointer; }
 
 .cmp-chart { display: flex; align-items: flex-end; gap: 3px; height: 100px; padding: 0 16px 4px; }
 .cmp-grp { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 0; height: 100%; }
 .b-comp { width: 100%; background: var(--gold); opacity: .85; transition: height .5s ease; }
 .b-simp { width: 100%; background: var(--pg); opacity: .4; transition: height .5s ease; }
-.b-yr { font-size: 6px; color: var(--dim); margin-top: 3px; }
+.b-yr { font-size: 12px; color: var(--dim); margin-top: 3px; }
 
 .legend-row { display: flex; gap: 14px; padding: 8px 16px 0; }
-.leg { display: flex; align-items: center; gap: 5px; font-size: 8px; color: var(--dim); }
+.leg { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--dim); }
 .leg-dot { width: 8px; height: 8px; flex-shrink: 0; }
 
 .ms-list { display: flex; flex-direction: column; gap: 6px; }
 .ms-row { display: flex; align-items: center; gap: 10px; padding: 7px 10px; background: var(--panel2); border: 1px solid var(--border); }
-.ms-yr { font-family: 'Press Start 2P', monospace; font-size: 8px; color: var(--dim); min-width: 38px; }
+.ms-yr { font-family: 'Press Start 2P', monospace; font-size: 12px; color: var(--dim); min-width: 38px; }
 .ms-bw { flex: 1; height: 6px; background: #1a1a1a; border: 1px solid var(--border); }
 .ms-b { height: 100%; background: var(--gold); transition: width .6s ease; }
-.ms-v { font-size: 9px; color: var(--gold); min-width: 62px; text-align: right; }
-.cmp-note { margin-top: 12px; padding: 8px 12px; border-left: 3px solid var(--pg); background: #001a00; font-size: 8px; color: var(--pg); line-height: 1.9; }
+.ms-v { font-size: 13px; color: var(--gold); min-width: 62px; text-align: right; }
+.cmp-note { margin-top: 12px; padding: 8px 12px; border-left: 3px solid var(--pg); background: #001a00; font-size: 12px; color: var(--pg); line-height: 1.9; }
 
 /* ── PAYWALL ─────────────────────────────── */
 .pw-blur {
@@ -376,10 +376,10 @@ input[type=range] { width: 100%; accent-color: var(--pg); cursor: pointer; }
   background: var(--panel2); border: 2px solid var(--gold);
 }
 .pw-top { background: #001a00; border-bottom: 2px solid var(--border); padding: 16px; text-align: center; }
-.game-over { font-family: 'Press Start 2P', monospace; font-size: 8px; color: var(--dim); letter-spacing: 3px; margin-bottom: 8px; animation: blink 2s step-end infinite; }
+.game-over { font-family: 'Press Start 2P', monospace; font-size: 12px; color: var(--dim); letter-spacing: 3px; margin-bottom: 8px; animation: blink 2s step-end infinite; }
 .trial-ended { font-family: 'Press Start 2P', monospace; font-size: 13px; color: var(--gold); line-height: 1.9; margin-bottom: 10px; }
 .day-dots { display: flex; justify-content: center; gap: 4px; }
-.day-dot { width: 20px; height: 20px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 7px; }
+.day-dot { width: 20px; height: 20px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 13px; }
 .day-dot.done { background: var(--pg); border-color: var(--pg); color: #000; }
 .day-dot.today { background: var(--gold); border-color: var(--gold); color: #000; }
 
@@ -394,44 +394,44 @@ input[type=range] { width: 100%; accent-color: var(--pg); cursor: pointer; }
 .plan.sel .plan-radio { border-color: var(--gold); }
 .plan.sel .plan-radio::after { content: ''; position: absolute; inset: 2px; background: var(--gold); }
 .plan-info { flex: 1; }
-.plan-name { font-size: 10px; color: var(--text); margin-bottom: 2px; }
-.plan-desc { font-size: 8px; color: var(--dim); }
-.plan-price { font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--gold); }
-.plan-badge { font-size: 7px; padding: 2px 6px; background: #001a00; color: var(--pg); border: 1px solid var(--pg); margin-left: 6px; }
+.plan-name { font-size: 12px; color: var(--text); margin-bottom: 2px; }
+.plan-desc { font-size: 12px; color: var(--dim); }
+.plan-price { font-family: 'Press Start 2P', monospace; font-size: 12px; color: var(--gold); }
+.plan-badge { font-size: 13px; padding: 2px 6px; background: #001a00; color: var(--pg); border: 1px solid var(--pg); margin-left: 6px; }
 
 .perks { display: flex; flex-direction: column; gap: 5px; padding: 10px 12px; border: 1px solid var(--border); background: var(--panel); margin-bottom: 14px; }
-.perk { display: flex; align-items: center; gap: 8px; font-size: 9px; color: #aaa; }
-.perk-ic { color: var(--pg); font-size: 10px; width: 12px; }
+.perk { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #aaa; }
+.perk-ic { color: var(--pg); font-size: 12px; width: 12px; }
 
 .cta-btn {
   display: flex; align-items: center; justify-content: center; gap: 10px;
   width: 100%; padding: 14px; background: #001a00; border: 2px solid var(--pg);
-  color: var(--pg); font-family: 'Press Start 2P', monospace; font-size: 10px;
+  color: var(--pg); font-family: 'Press Start 2P', monospace; font-size: 12px;
   letter-spacing: 2px; cursor: pointer; transition: all .15s;
 }
 .cta-btn:hover { background: #003300; }
 .cta-btn:active { transform: scale(.98); }
 
-.pw-footer { text-align: center; font-size: 8px; color: var(--dim); padding: 10px; border-top: 1px solid var(--border); }
+.pw-footer { text-align: center; font-size: 12px; color: var(--dim); padding: 10px; border-top: 1px solid var(--border); }
 
 .success-wrap { display: none; flex: 1; align-items: center; justify-content: center; flex-direction: column; gap: 14px; padding: 30px; text-align: center; }
 .success-wrap.show { display: flex; }
 .success-icon { font-size: 48px; animation: bounce .6s ease infinite alternate; }
-.success-title { font-family: 'Press Start 2P', monospace; font-size: 11px; color: var(--gold); line-height: 1.9; }
-.success-sub { font-size: 9px; color: var(--dim); line-height: 2; }
-.success-xp { font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--pg); margin-top: 6px; }
+.success-title { font-family: 'Press Start 2P', monospace; font-size: 13px; color: var(--gold); line-height: 1.9; }
+.success-sub { font-size: 13px; color: var(--dim); line-height: 2; }
+.success-xp { font-family: 'Press Start 2P', monospace; font-size: 12px; color: var(--pg); margin-top: 6px; }
 
 /* ── FITNESS MODULE ───────────────────────────────────── */
 :root { --fire:#FF6B2B; --amber:#FFAA00; --str:#FF4444; --agi:#FFAA00; --vit:#FF6B2B; --spi:#AA88FF; }
 .fit-hero { display:flex; align-items:center; gap:14px; padding:14px 16px; border-bottom:1px solid #2a1a0a; background:#0d0500; }
 .fit-avatar { width:52px; height:52px; flex-shrink:0; image-rendering:pixelated; }
 .fit-hero-right { flex:1; }
-.fit-username { font-family:'Press Start 2P',monospace; font-size:8px; color:var(--fire); margin-bottom:6px; }
-.fit-streak { font-size:8px; color:var(--amber); margin-bottom:4px; animation:blink 2s step-end infinite; }
+.fit-username { font-family:'Press Start 2P',monospace; font-size:12px; color:var(--fire); margin-bottom:6px; }
+.fit-streak { font-size:12px; color:var(--amber); margin-bottom:4px; animation:blink 2s step-end infinite; }
 .attr-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; background:#2a1a0a; border-top:1px solid #2a1a0a; border-bottom:1px solid #2a1a0a; }
 .attr-card { background:#0d0500; padding:10px 8px; text-align:center; }
-.attr-label { font-size:7px; color:#664422; margin-bottom:5px; text-transform:uppercase; }
-.attr-val { font-family:'Press Start 2P',monospace; font-size:11px; margin-bottom:4px; }
+.attr-label { font-size:13px; color:#664422; margin-bottom:5px; text-transform:uppercase; }
+.attr-val { font-family:'Press Start 2P',monospace; font-size:13px; margin-bottom:4px; }
 .attr-bar { height:4px; background:#1a0a00; border:1px solid #2a1a0a; overflow:hidden; }
 .attr-bar-fill { height:100%; transition:width 0.6s ease; }
 .str-c{color:var(--str);} .str-b{background:var(--str);}
@@ -439,46 +439,46 @@ input[type=range] { width: 100%; accent-color: var(--pg); cursor: pointer; }
 .vit-c{color:var(--vit);} .vit-b{background:var(--vit);}
 .spi-c{color:var(--spi);} .spi-b{background:var(--spi);}
 .fit-section { padding:14px 16px; border-top:1px solid #2a1a0a; }
-.fit-section-title { font-size:8px; color:#664422; text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.fit-section-title { font-size:12px; color:#664422; text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
 .fit-section-title::after { content:''; flex:1; height:1px; background:#2a1a0a; }
 .fit-tab-row { display:flex; gap:1px; background:#2a1a0a; border-bottom:1px solid #2a1a0a; }
-.fit-tab { flex:1; padding:9px 0; text-align:center; font-size:8px; font-family:'Space Mono',monospace; cursor:pointer; background:#0d0500; border:none; color:#664422; transition:all .15s; }
+.fit-tab { flex:1; padding:9px 0; text-align:center; font-size:12px; font-family:'Space Mono',monospace; cursor:pointer; background:#0d0500; border:none; color:#664422; transition:all .15s; }
 .fit-tab.active { background:#1a0800; color:var(--fire); }
 .fit-log-panel { display:none; padding:14px 16px; }
 .fit-log-panel.active { display:block; }
 .fit-input-row { display:flex; gap:8px; align-items:center; margin-bottom:10px; }
-.fit-lbl { font-size:8px; color:#664422; min-width:52px; }
-.fit-inp { flex:1; background:#0a0300; border:1px solid #2a1a0a; border-left:3px solid #2a1a0a; color:var(--text); font-family:'Space Mono',monospace; font-size:11px; padding:7px 10px; outline:none; transition:border-color .2s; -webkit-appearance:none; }
+.fit-lbl { font-size:12px; color:#664422; min-width:52px; }
+.fit-inp { flex:1; background:#0a0300; border:1px solid #2a1a0a; border-left:3px solid #2a1a0a; color:var(--text); font-family:'Space Mono',monospace; font-size:13px; padding:7px 10px; outline:none; transition:border-color .2s; -webkit-appearance:none; }
 .fit-inp:focus { border-left-color:var(--fire); }
 .fit-inp::placeholder { color:#443322; }
-.fit-unit { font-size:9px; color:#664422; min-width:28px; }
-.fit-submit { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; padding:12px; background:#1a0800; border:2px solid var(--fire); color:var(--fire); font-family:'Press Start 2P',monospace; font-size:9px; letter-spacing:2px; cursor:pointer; transition:all .15s; margin-top:4px; }
+.fit-unit { font-size:13px; color:#664422; min-width:28px; }
+.fit-submit { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; padding:12px; background:#1a0800; border:2px solid var(--fire); color:var(--fire); font-family:'Press Start 2P',monospace; font-size:13px; letter-spacing:2px; cursor:pointer; transition:all .15s; margin-top:4px; }
 .fit-submit:hover { background:#2a1000; }
 .exercise-list { display:flex; flex-direction:column; gap:6px; margin-bottom:10px; }
 .exercise-item { display:flex; align-items:center; gap:10px; padding:8px 10px; background:#0a0300; border:1px solid #2a1a0a; border-left:3px solid var(--fire); }
-.ex-name { flex:1; font-size:10px; color:var(--text); }
-.ex-detail { font-size:8px; color:#664422; }
-.ex-xp { font-family:'Press Start 2P',monospace; font-size:8px; color:var(--amber); }
+.ex-name { flex:1; font-size:12px; color:var(--text); }
+.ex-detail { font-size:12px; color:#664422; }
+.ex-xp { font-family:'Press Start 2P',monospace; font-size:12px; color:var(--amber); }
 .body-stat-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin-bottom:12px; }
 .body-stat { background:#0a0300; border:1px solid #2a1a0a; padding:10px 8px; text-align:center; }
-.body-stat-lbl { font-size:7px; color:#664422; margin-bottom:5px; }
-.body-stat-val { font-family:'Press Start 2P',monospace; font-size:10px; color:var(--fire); }
-.body-stat-unit { font-size:7px; color:#664422; margin-top:2px; }
+.body-stat-lbl { font-size:13px; color:#664422; margin-bottom:5px; }
+.body-stat-val { font-family:'Press Start 2P',monospace; font-size:12px; color:var(--fire); }
+.body-stat-unit { font-size:13px; color:#664422; margin-top:2px; }
 .sleep-row { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
 .sleep-icon { font-size:14px; width:20px; text-align:center; }
 .sleep-info { flex:1; }
-.sleep-name { font-size:10px; color:var(--text); margin-bottom:3px; }
+.sleep-name { font-size:12px; color:var(--text); margin-bottom:3px; }
 .sleep-bar-wrap { height:6px; background:#1a0a00; border:1px solid #2a1a0a; }
 .sleep-bar { height:100%; background:var(--spi); transition:width .6s; }
-.sleep-val { font-family:'Press Start 2P',monospace; font-size:9px; color:var(--spi); min-width:40px; text-align:right; }
+.sleep-val { font-family:'Press Start 2P',monospace; font-size:13px; color:var(--spi); min-width:40px; text-align:right; }
 .fit-feedback { display:none; flex:1; align-items:center; justify-content:center; flex-direction:column; gap:12px; padding:30px; text-align:center; }
 .fit-feedback.show { display:flex; }
 .fit-fb-icon { font-size:36px; animation:bounce .5s ease infinite alternate; }
-.fit-fb-title { font-family:'Press Start 2P',monospace; font-size:10px; color:var(--fire); line-height:1.9; }
+.fit-fb-title { font-family:'Press Start 2P',monospace; font-size:12px; color:var(--fire); line-height:1.9; }
 .fit-fb-attr { display:flex; gap:8px; margin-top:8px; flex-wrap:wrap; justify-content:center; }
-.fit-fb-chip { font-size:8px; padding:4px 10px; border:1px solid var(--fire); color:var(--fire); background:#1a0800; }
-.fit-fb-xp { font-family:'Press Start 2P',monospace; font-size:10px; color:var(--amber); }
-.fit-fb-back { margin-top:10px; padding:10px 20px; background:none; border:1px solid #664422; color:#664422; font-family:'Space Mono',monospace; font-size:9px; cursor:pointer; transition:all .15s; }
+.fit-fb-chip { font-size:12px; padding:4px 10px; border:1px solid var(--fire); color:var(--fire); background:#1a0800; }
+.fit-fb-xp { font-family:'Press Start 2P',monospace; font-size:12px; color:var(--amber); }
+.fit-fb-back { margin-top:10px; padding:10px 20px; background:none; border:1px solid #664422; color:#664422; font-family:'Space Mono',monospace; font-size:13px; cursor:pointer; transition:all .15s; }
 .fit-fb-back:hover { border-color:var(--fire); color:var(--fire); }
 .fit-bottomnav { background:#0a0300; border-top:2px solid #2a1a0a; }
 .fit-bottomnav .nav-item { color:#664422; }
@@ -501,7 +501,7 @@ input[type=range] { width: 100%; accent-color: var(--pg); cursor: pointer; }
 #badge-toast {
   position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(20px);
   background: #0d0d0d; border: 2px solid var(--gold);
-  color: var(--gold); font-family: 'Press Start 2P', monospace; font-size: 8px;
+  color: var(--gold); font-family: 'Press Start 2P', monospace; font-size: 12px;
   padding: 8px 14px; opacity: 0; transition: opacity .3s, transform .3s;
   z-index: 998; pointer-events: none; white-space: nowrap; text-align: center;
   line-height: 1.8;
@@ -668,24 +668,24 @@ body::after {
   gap: 14px; padding: 24px; text-align: center;
 }
 .gate-icon { font-size: 32px; animation: bounce .6s ease infinite alternate; }
-.gate-title { font-family:'Press Start 2P',monospace; font-size:10px; color:var(--gold); line-height:2; }
-.gate-desc { font-size:9px; color:var(--dim); line-height:1.9; max-width:280px; }
+.gate-title { font-family:'Press Start 2P',monospace; font-size:12px; color:var(--gold); line-height:2; }
+.gate-desc { font-size:13px; color:var(--dim); line-height:1.9; max-width:280px; }
 .gate-btn {
   padding:12px 20px; background:#001a00; border:2px solid var(--pg);
-  color:var(--pg); font-family:'Press Start 2P',monospace; font-size:9px;
+  color:var(--pg); font-family:'Press Start 2P',monospace; font-size:13px;
   letter-spacing:2px; cursor:pointer; transition:all .15s; width:100%;
 }
 .gate-btn:hover { background:#003300; }
 .gate-btn.gold-btn { border-color:var(--gold); color:var(--gold); background:#111000; }
 .gate-btn.gold-btn:hover { background:#1a1500; }
 .gate-free-btn {
-  font-size:8px; color:var(--dim); background:none; border:none;
+  font-size:12px; color:var(--dim); background:none; border:none;
   font-family:'Space Mono',monospace; cursor:pointer; padding:4px; text-decoration:underline;
 }
 
 .free-counter {
   display:flex; align-items:center; gap:8px; padding:6px 14px;
-  background:var(--panel2); border-bottom:1px solid var(--border); font-size:8px; color:var(--dim);
+  background:var(--panel2); border-bottom:1px solid var(--border); font-size:12px; color:var(--dim);
 }
 .free-counter-bar { flex:1; height:4px; background:#1a1a1a; border:1px solid var(--border); }
 .free-counter-fill { height:100%; background:var(--pg); transition:width .4s ease; }
@@ -695,16 +695,16 @@ body::after {
 .pro-lock-banner {
   display:flex; align-items:center; gap:8px; padding:10px 14px;
   background:#111000; border:1px solid var(--gold); margin:12px 16px;
-  font-size:8px; color:var(--gold); cursor:pointer;
+  font-size:12px; color:var(--gold); cursor:pointer;
 }
 .pro-lock-banner:hover { background:#1a1500; }
 
 .ai-report-wrap { padding:14px 16px; border-top:1px solid var(--border); position:relative; }
 .ai-report-card {
   background:#001a00; border:1px solid var(--pg);
-  padding:12px 14px; font-size:9px; color:var(--pg); line-height:2;
+  padding:12px 14px; font-size:13px; color:var(--pg); line-height:2;
 }
-.ai-loading { display:flex; align-items:center; gap:6px; font-size:9px; color:var(--dim); padding:10px 0; }
+.ai-loading { display:flex; align-items:center; gap:6px; font-size:13px; color:var(--dim); padding:10px 0; }
 .ai-dot { width:5px; height:5px; background:var(--pg); animation:blink .5s step-end infinite; }
 .ai-dot:nth-child(2){animation-delay:.2s;}
 .ai-dot:nth-child(3){animation-delay:.4s;}
@@ -727,7 +727,7 @@ body::after {
     <div class="logo">GRIND<span>VAULT</span></div>
     <div class="trial-badge" id="trialBadge" onclick="gotoScreen('s-paywall')">▶ TRIAL DAY 3/7</div>
     <div style="display:flex;align-items:center;gap:6px;">
-      <button class="theme-toggle" id="auth-btn" onclick="showAuthModal()" style="width:auto;padding:2px 8px;font-size:8px;font-family:'Space Mono',monospace;">登入</button>
+      <button class="theme-toggle" id="auth-btn" onclick="showAuthModal()" style="width:auto;padding:2px 8px;font-size:12px;font-family:'Space Mono',monospace;">登入</button>
       <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" title="切換亮色/暗色">◑</button>
       <div class="lang-row">
         <button class="lang-btn active" onclick="setLang('zh',this)">中</button>
@@ -760,7 +760,7 @@ body::after {
       </div>
       <div class="hero-right">
         <div class="username">PLAYER_01
-          <span id="xp-level-display" style="font-size:7px;color:var(--gold);margin-left:8px;">LV.1</span>
+          <span id="xp-level-display" style="font-size:13px;color:var(--gold);margin-left:8px;">LV.1</span>
         </div>
         <div style="position:relative">
           <div class="xpbar-wrap">
@@ -769,11 +769,11 @@ body::after {
             <div class="xpbar-val">62%</div>
           </div>
           <div class="xpbar-wrap" style="margin-bottom:2px">
-            <div class="xpbar-lbl" style="font-size:7px;color:var(--gold)">XP</div>
+            <div class="xpbar-lbl" style="font-size:13px;color:var(--gold)">XP</div>
             <div class="xpbar"><div class="xpbar-fill" id="xp-progress-bar" style="width:40%;background:var(--gold);"></div></div>
-            <div class="xpbar-val" style="color:var(--gold);font-size:7px;" id="xp-progress-lbl">40/100</div>
+            <div class="xpbar-val" style="color:var(--gold);font-size:13px;" id="xp-progress-lbl">40/100</div>
           </div>
-          <div id="xp-floater" style="position:absolute;right:0;top:-14px;font-family:'Press Start 2P',monospace;font-size:8px;color:var(--gold);opacity:0;transition:opacity .4s,transform .4s;pointer-events:none;">+XP</div>
+          <div id="xp-floater" style="position:absolute;right:0;top:-14px;font-family:'Press Start 2P',monospace;font-size:12px;color:var(--gold);opacity:0;transition:opacity .4s,transform .4s;pointer-events:none;">+XP</div>
         </div>
         <div class="xpbar-wrap">
           <div class="xpbar-lbl" style="color:var(--fire)">STR</div>
@@ -784,7 +784,7 @@ body::after {
     </div>
 
     <!-- ── FINANCE METRICS ── -->
-    <div style="padding:10px 16px 4px;font-size:8px;color:var(--dim);letter-spacing:2px;background:var(--panel2);border-bottom:1px solid var(--border);" data-i="wealth_label">◆ WEALTH QUEST</div>
+    <div style="padding:10px 16px 4px;font-size:12px;color:var(--dim);letter-spacing:2px;background:var(--panel2);border-bottom:1px solid var(--border);" data-i="wealth_label">◆ WEALTH QUEST</div>
     <div class="metric-grid">
       <div class="m-card">
         <div class="m-label" data-i="lbl_income">本月收入</div>
@@ -802,45 +802,45 @@ body::after {
         <div class="m-sub">NT$</div>
       </div>
     </div>
-    <div id="levelup-toast" style="position:fixed;top:60px;left:50%;transform:translateX(-50%) translateY(-20px);background:#001a00;border:2px solid var(--gold);color:var(--gold);font-family:'Press Start 2P',monospace;font-size:9px;padding:8px 16px;opacity:0;transition:opacity .4s,transform .4s;z-index:999;pointer-events:none;white-space:nowrap;"></div>
+    <div id="levelup-toast" style="position:fixed;top:60px;left:50%;transform:translateX(-50%) translateY(-20px);background:#001a00;border:2px solid var(--gold);color:var(--gold);font-family:'Press Start 2P',monospace;font-size:13px;padding:8px 16px;opacity:0;transition:opacity .4s,transform .4s;z-index:999;pointer-events:none;white-space:nowrap;"></div>
 
     <!-- ── BODY TECH METRICS ── -->
-    <div style="padding:10px 16px 4px;font-size:8px;color:#664422;letter-spacing:2px;background:#0d0500;border-bottom:1px solid #2a1a0a;border-top:1px solid #2a1a0a;" data-i="body_label">▲ BODY TECH</div>
+    <div style="padding:10px 16px 4px;font-size:12px;color:#664422;letter-spacing:2px;background:#0d0500;border-bottom:1px solid #2a1a0a;border-top:1px solid #2a1a0a;" data-i="body_label">▲ BODY TECH</div>
     <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:#2a1a0a;border-bottom:1px solid #2a1a0a;">
       <div style="background:#0d0500;padding:11px 8px;text-align:center;">
-        <div style="font-size:7px;color:#664422;margin-bottom:5px;">STR</div>
-        <div style="font-family:'Press Start 2P',monospace;font-size:10px;color:var(--str);" id="dash-str">24</div>
+        <div style="font-size:13px;color:#664422;margin-bottom:5px;">STR</div>
+        <div style="font-family:'Press Start 2P',monospace;font-size:12px;color:var(--str);" id="dash-str">24</div>
       </div>
       <div style="background:#0d0500;padding:11px 8px;text-align:center;">
-        <div style="font-size:7px;color:#664422;margin-bottom:5px;">AGI</div>
-        <div style="font-family:'Press Start 2P',monospace;font-size:10px;color:var(--agi);" id="dash-agi">18</div>
+        <div style="font-size:13px;color:#664422;margin-bottom:5px;">AGI</div>
+        <div style="font-family:'Press Start 2P',monospace;font-size:12px;color:var(--agi);" id="dash-agi">18</div>
       </div>
       <div style="background:#0d0500;padding:11px 8px;text-align:center;">
-        <div style="font-size:7px;color:#664422;margin-bottom:5px;">VIT</div>
-        <div style="font-family:'Press Start 2P',monospace;font-size:10px;color:var(--vit);" id="dash-vit">31</div>
+        <div style="font-size:13px;color:#664422;margin-bottom:5px;">VIT</div>
+        <div style="font-family:'Press Start 2P',monospace;font-size:12px;color:var(--vit);" id="dash-vit">31</div>
       </div>
       <div style="background:#0d0500;padding:11px 8px;text-align:center;">
-        <div style="font-size:7px;color:#664422;margin-bottom:5px;">SPI</div>
-        <div style="font-family:'Press Start 2P',monospace;font-size:10px;color:var(--spi);" id="dash-spi">22</div>
+        <div style="font-size:13px;color:#664422;margin-bottom:5px;">SPI</div>
+        <div style="font-family:'Press Start 2P',monospace;font-size:12px;color:var(--spi);" id="dash-spi">22</div>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#2a1a0a;border-bottom:1px solid #2a1a0a;">
       <div style="background:#0d0500;padding:10px 8px;text-align:center;">
-        <div style="font-size:7px;color:#664422;margin-bottom:4px;">體重</div>
-        <div style="font-family:'Press Start 2P',monospace;font-size:9px;color:var(--fire);" id="dash-weight">72.5 <span style="font-size:6px;color:#664422">kg</span></div>
+        <div style="font-size:13px;color:#664422;margin-bottom:4px;">體重</div>
+        <div style="font-family:'Press Start 2P',monospace;font-size:13px;color:var(--fire);" id="dash-weight">72.5 <span style="font-size:12px;color:#664422">kg</span></div>
       </div>
       <div style="background:#0d0500;padding:10px 8px;text-align:center;">
-        <div style="font-size:7px;color:#664422;margin-bottom:4px;">體脂</div>
-        <div style="font-family:'Press Start 2P',monospace;font-size:9px;color:var(--fire);" id="dash-fat">18.2 <span style="font-size:6px;color:#664422">%</span></div>
+        <div style="font-size:13px;color:#664422;margin-bottom:4px;">體脂</div>
+        <div style="font-family:'Press Start 2P',monospace;font-size:13px;color:var(--fire);" id="dash-fat">18.2 <span style="font-size:12px;color:#664422">%</span></div>
       </div>
       <div style="background:#0d0500;padding:10px 8px;text-align:center;">
-        <div style="font-size:7px;color:#664422;margin-bottom:4px;" data-i="streak_label">連續天數</div>
-        <div style="font-family:'Press Start 2P',monospace;font-size:9px;color:var(--amber);">3 <span style="font-size:6px;color:#664422">天</span></div>
+        <div style="font-size:13px;color:#664422;margin-bottom:4px;" data-i="streak_label">連續天數</div>
+        <div style="font-family:'Press Start 2P',monospace;font-size:13px;color:var(--amber);">3 <span style="font-size:12px;color:#664422">天</span></div>
       </div>
     </div>
     <div style="display:flex;gap:6px;padding:10px 16px;background:#0d0500;border-bottom:1px solid #2a1a0a;">
-      <button onclick="gotoScreen('s-fit')" style="flex:1;padding:8px;background:#1a0800;border:1px solid var(--fire);color:var(--fire);font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;" data-i="btn_train">▲ 訓練記錄</button>
-      <button onclick="gotoScreen('s-fit');setFitTab('body')" style="flex:1;padding:8px;background:#1a0800;border:1px solid #664422;color:#664422;font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;" data-i="btn_body">● 更新身體</button>
+      <button onclick="gotoScreen('s-fit')" style="flex:1;padding:8px;background:#1a0800;border:1px solid var(--fire);color:var(--fire);font-family:'Space Mono',monospace;font-size:13px;cursor:pointer;" data-i="btn_train">▲ 訓練記錄</button>
+      <button onclick="gotoScreen('s-fit');setFitTab('body')" style="flex:1;padding:8px;background:#1a0800;border:1px solid #664422;color:#664422;font-family:'Space Mono',monospace;font-size:13px;cursor:pointer;" data-i="btn_body">● 更新身體</button>
     </div>
 
     <!-- ── ACHIEVEMENTS ── -->
@@ -896,7 +896,7 @@ body::after {
 
     <!-- AI monthly report section -->
     <div class="ai-report-wrap" id="ai-report-section">
-      <div class="section-title" style="font-size:8px;color:var(--dim);letter-spacing:2px;margin-bottom:10px;display:flex;align-items:center;gap:8px;">AI 財務報告 <span style="font-size:7px;padding:1px 5px;background:var(--gold);color:#000;font-family:'Space Mono',monospace;">PRO</span><div style="flex:1;height:1px;background:var(--border);"></div></div>
+      <div class="section-title" style="font-size:12px;color:var(--dim);letter-spacing:2px;margin-bottom:10px;display:flex;align-items:center;gap:8px;">AI 財務報告 <span style="font-size:13px;padding:1px 5px;background:var(--gold);color:#000;font-family:'Space Mono',monospace;">PRO</span><div style="flex:1;height:1px;background:var(--border);"></div></div>
       <div id="ai-report-content">
         <div class="pro-lock-banner" onclick="gotoScreen('s-paywall')">
           <span style="font-size:14px;">◆</span>
@@ -945,7 +945,7 @@ body::after {
     <div class="free-counter-bar">
       <div class="free-counter-fill" id="free-counter-fill" style="width:0%"></div>
     </div>
-    <span style="color:var(--gold);cursor:pointer;font-size:8px;" onclick="gotoScreen('s-paywall')">PRO ▶</span>
+    <span style="color:var(--gold);cursor:pointer;font-size:12px;" onclick="gotoScreen('s-paywall')">PRO ▶</span>
   </div>
 
   <div id="add-form" style="display:flex;flex-direction:column;flex:1">
@@ -1054,7 +1054,7 @@ body::after {
       <div class="section-title" data-i="ms_title">里程碑</div>
       <div class="ms-list" id="msList"></div>
       <div class="cmp-note" id="cmpNote"></div>
-      <div style="margin-top:8px;padding:8px 12px;border-left:3px solid var(--gold);background:#111000;font-size:8px;color:var(--gold);line-height:1.9;" id="lv-prediction"></div>
+      <div style="margin-top:8px;padding:8px 12px;border-left:3px solid var(--gold);background:#111000;font-size:12px;color:var(--gold);line-height:1.9;" id="lv-prediction"></div>
     </div>
   </div>
 
@@ -1098,25 +1098,25 @@ body::after {
 
     <div id="pw-trial-summary" style="display:none;padding:20px 14px;">
       <div style="background:#0d0d0d;border:2px solid var(--pg);padding:20px;text-align:center;">
-        <div style="font-family:'Press Start 2P',monospace;font-size:8px;color:var(--dim);letter-spacing:3px;margin-bottom:12px;animation:blink 2s step-end infinite;" data-i="trial_complete">7 DAYS COMPLETE</div>
+        <div style="font-family:'Press Start 2P',monospace;font-size:12px;color:var(--dim);letter-spacing:3px;margin-bottom:12px;animation:blink 2s step-end infinite;" data-i="trial_complete">7 DAYS COMPLETE</div>
         <div style="font-family:'Press Start 2P',monospace;font-size:12px;color:var(--pg);line-height:2;margin-bottom:16px;" data-i="trial_done">試用結束！<br>你做到了</div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px;">
           <div style="background:#001a00;border:1px solid var(--border);padding:10px 6px;text-align:center;">
             <div style="font-family:'Press Start 2P',monospace;font-size:14px;color:var(--gold);" id="summary-lv">LV.1</div>
-            <div style="font-size:7px;color:var(--dim);margin-top:4px;" data-i="summary_lv_lbl">等級</div>
+            <div style="font-size:13px;color:var(--dim);margin-top:4px;" data-i="summary_lv_lbl">等級</div>
           </div>
           <div style="background:#001a00;border:1px solid var(--border);padding:10px 6px;text-align:center;">
             <div style="font-family:'Press Start 2P',monospace;font-size:14px;color:var(--pg);" id="summary-badges">3</div>
-            <div style="font-size:7px;color:var(--dim);margin-top:4px;" data-i="summary_badge_lbl">徽章</div>
+            <div style="font-size:13px;color:var(--dim);margin-top:4px;" data-i="summary_badge_lbl">徽章</div>
           </div>
           <div style="background:#001a00;border:1px solid var(--border);padding:10px 6px;text-align:center;">
             <div style="font-family:'Press Start 2P',monospace;font-size:14px;color:var(--gold);" id="summary-xp">40</div>
-            <div style="font-size:7px;color:var(--dim);margin-top:4px;" data-i="summary_xp_lbl">XP</div>
+            <div style="font-size:13px;color:var(--dim);margin-top:4px;" data-i="summary_xp_lbl">XP</div>
           </div>
         </div>
-        <div style="font-size:9px;color:var(--dim);margin-bottom:16px;line-height:1.9;" data-i="trial_msg">你的角色已成長，繼續養成冒險者吧！<br>解鎖 PRO 保留所有進度 + 完整功能</div>
-        <button onclick="proceedToPlans()" style="width:100%;padding:13px;background:#001a00;border:2px solid var(--pg);color:var(--pg);font-family:'Press Start 2P',monospace;font-size:9px;letter-spacing:2px;cursor:pointer;" data-i="trial_cta">▶ 繼續養成冒險者</button>
-        <button onclick="gotoScreen('s-home')" style="width:100%;margin-top:8px;padding:10px;background:none;border:1px solid var(--dim);color:var(--dim);font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;" data-i="trial_free">先看看舊數據</button>
+        <div style="font-size:13px;color:var(--dim);margin-bottom:16px;line-height:1.9;" data-i="trial_msg">你的角色已成長，繼續養成冒險者吧！<br>解鎖 PRO 保留所有進度 + 完整功能</div>
+        <button onclick="proceedToPlans()" style="width:100%;padding:13px;background:#001a00;border:2px solid var(--pg);color:var(--pg);font-family:'Press Start 2P',monospace;font-size:13px;letter-spacing:2px;cursor:pointer;" data-i="trial_cta">▶ 繼續養成冒險者</button>
+        <button onclick="gotoScreen('s-home')" style="width:100%;margin-top:8px;padding:10px;background:none;border:1px solid var(--dim);color:var(--dim);font-family:'Space Mono',monospace;font-size:13px;cursor:pointer;" data-i="trial_free">先看看舊數據</button>
       </div>
     </div>
 
@@ -1141,7 +1141,7 @@ body::after {
                 <div class="plan-name" data-i="plan_m_name">月訂閱</div>
                 <div class="plan-desc" data-i="plan_m_desc">隨時取消</div>
               </div>
-              <div class="plan-price">$4.9<span style="font-size:7px;color:var(--dim)">/mo</span></div>
+              <div class="plan-price">$4.9<span style="font-size:13px;color:var(--dim)">/mo</span></div>
             </div>
             <div class="plan sel" id="plan-y" onclick="selPlan('y')">
               <div class="plan-radio"></div>
@@ -1149,7 +1149,7 @@ body::after {
                 <div class="plan-name"><span data-i="plan_y_name">年訂閱</span> <span class="plan-badge" data-i="plan_badge">省40%</span></div>
                 <div class="plan-desc" data-i="plan_y_desc">$35.9/年，約 $3/月</div>
               </div>
-              <div class="plan-price">$2.9<span style="font-size:7px;color:var(--dim)">/mo</span></div>
+              <div class="plan-price">$2.9<span style="font-size:13px;color:var(--dim)">/mo</span></div>
             </div>
           </div>
 
@@ -1203,7 +1203,7 @@ body::after {
 <div class="screen" id="s-fit">
   <div class="topbar" style="background:#0d0500;border-bottom:2px solid #2a1a0a;">
     <div class="logo" style="color:var(--fire)">GRIND<span style="color:var(--amber)">VAULT</span></div>
-    <div style="font-family:'Press Start 2P',monospace;font-size:8px;color:var(--amber);" data-i="fit_module">BODY TECH</div>
+    <div style="font-family:'Press Start 2P',monospace;font-size:12px;color:var(--amber);" data-i="fit_module">BODY TECH</div>
     <div class="lang-row">
       <button class="lang-btn active" onclick="setLang('zh',this)" style="border-color:#664422;color:#664422;">中</button>
       <button class="lang-btn" onclick="setLang('en',this)" style="border-color:#664422;color:#664422;">EN</button>
@@ -1234,12 +1234,12 @@ body::after {
         <div class="fit-username">PLAYER_01</div>
         <div class="fit-streak" id="fit-streak" data-i="fit_streak">▶ 連續訓練 3 天 — 燃脂火焰解鎖！</div>
         <div style="display:flex;gap:4px;margin-top:4px;">
-          <div style="width:14px;height:14px;background:var(--fire);display:flex;align-items:center;justify-content:center;font-size:9px;">▲</div>
-          <div style="width:14px;height:14px;background:#1a0800;border:1px solid var(--fire);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--fire);">▲</div>
-          <div style="width:14px;height:14px;background:#1a0800;border:1px solid var(--fire);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--fire);">▲</div>
-          <div style="width:14px;height:14px;background:#1a0800;border:1px solid #2a1a0a;display:flex;align-items:center;justify-content:center;font-size:9px;color:#664422;">▲</div>
-          <div style="width:14px;height:14px;background:#1a0800;border:1px solid #2a1a0a;display:flex;align-items:center;justify-content:center;font-size:9px;color:#664422;">▲</div>
-          <div style="font-size:8px;color:#664422;margin-left:4px;align-self:center;" data-i="fit_streak_lbl">連續天數</div>
+          <div style="width:14px;height:14px;background:var(--fire);display:flex;align-items:center;justify-content:center;font-size:13px;">▲</div>
+          <div style="width:14px;height:14px;background:#1a0800;border:1px solid var(--fire);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--fire);">▲</div>
+          <div style="width:14px;height:14px;background:#1a0800;border:1px solid var(--fire);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--fire);">▲</div>
+          <div style="width:14px;height:14px;background:#1a0800;border:1px solid #2a1a0a;display:flex;align-items:center;justify-content:center;font-size:13px;color:#664422;">▲</div>
+          <div style="width:14px;height:14px;background:#1a0800;border:1px solid #2a1a0a;display:flex;align-items:center;justify-content:center;font-size:13px;color:#664422;">▲</div>
+          <div style="font-size:12px;color:#664422;margin-left:4px;align-self:center;" data-i="fit_streak_lbl">連續天數</div>
         </div>
       </div>
     </div>
@@ -1794,7 +1794,7 @@ function renderAchievements() {
     el.innerHTML = `
       <div class="badge-icon" style="${a.done?'':'opacity:.3;filter:grayscale(1)'}">${a.icon}</div>
       <div class="badge-name" style="${a.done?'':'color:#333'}">${lang==='zh'?a.zh:a.en}</div>
-      ${!a.done ? `<div style="font-size:6px;color:#333;text-align:center;margin-top:2px;line-height:1.4">${lang==='zh'?a.condZh:a.condEn}</div>` : ''}
+      ${!a.done ? `<div style="font-size:12px;color:#333;text-align:center;margin-top:2px;line-height:1.4">${lang==='zh'?a.condZh:a.condEn}</div>` : ''}
     `;
     wrap.appendChild(el);
   });
@@ -2244,8 +2244,8 @@ function showLimitGate() {
     gate.style.cssText = 'flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center;';
     gate.innerHTML = `
       <div style="font-size:32px;animation:bounce .6s ease infinite alternate;">◆</div>
-      <div style="font-family:'Press Start 2P',monospace;font-size:10px;color:var(--gold);line-height:2;">${title}</div>
-      <div style="font-size:9px;color:var(--dim);line-height:1.9;white-space:pre-line;">${desc}</div>
+      <div style="font-family:'Press Start 2P',monospace;font-size:12px;color:var(--gold);line-height:2;">${title}</div>
+      <div style="font-size:13px;color:var(--dim);line-height:1.9;white-space:pre-line;">${desc}</div>
       <button class="gate-btn gold-btn" onclick="gotoScreen('s-paywall')">▶ ${lang==='zh'?'解鎖 PRO — $4.9/mo':'Unlock PRO — $4.9/mo'}</button>
       <button class="gate-free-btn" onclick="resetAdd()">${lang==='zh'?'← 返回':'← Back'}</button>
     `;
@@ -2271,7 +2271,7 @@ function updateProUI() {
   const aiContent = document.getElementById('ai-report-content');
   if (aiContent && isPro) {
     aiContent.innerHTML = `
-      <button style="width:100%;padding:10px;background:#001a00;border:1px solid var(--pg);color:var(--pg);font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;" onclick="generateAIReport()">
+      <button style="width:100%;padding:10px;background:#001a00;border:1px solid var(--pg);color:var(--pg);font-family:'Space Mono',monospace;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;" onclick="generateAIReport()">
         <span>◆</span><span id="ai-btn-text">${lang==='zh'?'生成本月 AI 財務報告':'Generate Monthly AI Report'}</span>
       </button>
       <div id="ai-report-output" style="margin-top:8px;"></div>
@@ -2459,7 +2459,7 @@ async function generateAIReport() {
   const output = document.getElementById('ai-report-output');
   if (!output) return;
   if (btn) btn.textContent = lang==='zh' ? '分析中...' : 'Analyzing...';
-  output.innerHTML = `<div class="ai-loading"><div class="ai-dot"></div><div class="ai-dot"></div><div class="ai-dot"></div><span style="font-size:8px;color:var(--dim);margin-left:4px;">${lang==='zh'?'AI 正在分析你的財務狀況...':'AI analyzing your finances...'}</span></div>`;
+  output.innerHTML = `<div class="ai-loading"><div class="ai-dot"></div><div class="ai-dot"></div><div class="ai-dot"></div><span style="font-size:12px;color:var(--dim);margin-left:4px;">${lang==='zh'?'AI 正在分析你的財務狀況...':'AI analyzing your finances...'}</span></div>`;
 
   const income = document.getElementById('val-income-live')?.textContent || '52,000';
   const expense = document.getElementById('val-expense-live')?.textContent || '19,800';
@@ -2484,7 +2484,7 @@ async function generateAIReport() {
     if (btn) btn.textContent = lang==='zh' ? '重新生成報告' : 'Regenerate Report';
   } catch(e) {
     console.error('AI report error:', e);
-    output.innerHTML = `<div style="font-size:8px;color:var(--red);padding:8px;">${lang==='zh'?'連線失敗，請檢查網路。':'Connection failed. Check network.'}</div>`;
+    output.innerHTML = `<div style="font-size:12px;color:var(--red);padding:8px;">${lang==='zh'?'連線失敗，請檢查網路。':'Connection failed. Check network.'}</div>`;
     if (btn) btn.textContent = lang==='zh' ? '重試' : 'Retry';
   }
 }
@@ -2540,21 +2540,21 @@ window.gotoScreen = function(id) {
 <div id="badge-toast"></div>
 
 <!-- sync toast -->
-<div id="sync-toast" style="position:fixed;top:56px;left:50%;transform:translateX(-50%) translateY(-10px);background:#001a00;border:1px solid var(--pg);color:var(--pg);font-family:'Space Mono',monospace;font-size:8px;padding:5px 12px;opacity:0;transition:opacity .3s,transform .3s;z-index:999;pointer-events:none;white-space:nowrap;"></div>
+<div id="sync-toast" style="position:fixed;top:56px;left:50%;transform:translateX(-50%) translateY(-10px);background:#001a00;border:1px solid var(--pg);color:var(--pg);font-family:'Space Mono',monospace;font-size:12px;padding:5px 12px;opacity:0;transition:opacity .3s,transform .3s;z-index:999;pointer-events:none;white-space:nowrap;"></div>
 
 <!-- auth modal -->
 <div id="auth-modal" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;">
   <div style="background:var(--panel);border:2px solid var(--pg);padding:24px;width:88%;max-width:340px;">
-    <div style="font-family:'Press Start 2P',monospace;font-size:9px;color:var(--pg);margin-bottom:16px;text-align:center;">☁ 雲端同步登入</div>
-    <div style="font-size:8px;color:var(--dim);margin-bottom:12px;text-align:center;line-height:1.8;">登入後換手機也能保留你的資料<br>PRO 狀態自動同步</div>
-    <input id="auth-email-inp" type="email" placeholder="your@email.com" style="width:100%;background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--pg);color:var(--text);font-family:'Space Mono',monospace;font-size:10px;padding:9px 12px;outline:none;margin-bottom:8px;">
-    <input id="auth-pass-inp" type="password" placeholder="密碼（6字以上）" style="width:100%;background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--pg);color:var(--text);font-family:'Space Mono',monospace;font-size:10px;padding:9px 12px;outline:none;margin-bottom:8px;">
-    <div id="auth-err" style="font-size:8px;color:var(--red);margin-bottom:8px;min-height:16px;"></div>
+    <div style="font-family:'Press Start 2P',monospace;font-size:13px;color:var(--pg);margin-bottom:16px;text-align:center;">☁ 雲端同步登入</div>
+    <div style="font-size:12px;color:var(--dim);margin-bottom:12px;text-align:center;line-height:1.8;">登入後換手機也能保留你的資料<br>PRO 狀態自動同步</div>
+    <input id="auth-email-inp" type="email" placeholder="your@email.com" style="width:100%;background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--pg);color:var(--text);font-family:'Space Mono',monospace;font-size:12px;padding:9px 12px;outline:none;margin-bottom:8px;">
+    <input id="auth-pass-inp" type="password" placeholder="密碼（6字以上）" style="width:100%;background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--pg);color:var(--text);font-family:'Space Mono',monospace;font-size:12px;padding:9px 12px;outline:none;margin-bottom:8px;">
+    <div id="auth-err" style="font-size:12px;color:var(--red);margin-bottom:8px;min-height:16px;"></div>
     <div style="display:flex;gap:8px;">
-      <button onclick="handleAuth('signin')" style="flex:1;padding:10px;background:#001a00;border:2px solid var(--pg);color:var(--pg);font-family:'Press Start 2P',monospace;font-size:8px;cursor:pointer;">登入</button>
-      <button onclick="handleAuth('signup')" style="flex:1;padding:10px;background:var(--panel);border:1px solid var(--dim);color:var(--dim);font-family:'Press Start 2P',monospace;font-size:8px;cursor:pointer;">註冊</button>
+      <button onclick="handleAuth('signin')" style="flex:1;padding:10px;background:#001a00;border:2px solid var(--pg);color:var(--pg);font-family:'Press Start 2P',monospace;font-size:12px;cursor:pointer;">登入</button>
+      <button onclick="handleAuth('signup')" style="flex:1;padding:10px;background:var(--panel);border:1px solid var(--dim);color:var(--dim);font-family:'Press Start 2P',monospace;font-size:12px;cursor:pointer;">註冊</button>
     </div>
-    <button onclick="hideAuthModal()" style="width:100%;margin-top:8px;padding:8px;background:none;border:none;color:var(--dim);font-family:'Space Mono',monospace;font-size:9px;cursor:pointer;">取消</button>
+    <button onclick="hideAuthModal()" style="width:100%;margin-top:8px;padding:8px;background:none;border:none;color:var(--dim);font-family:'Space Mono',monospace;font-size:13px;cursor:pointer;">取消</button>
   </div>
 </div>
 
