@@ -1231,6 +1231,139 @@ body::after {
 </div>
 
 <!-- ═══════════════════════════════════════════════════════ -->
+<!--  SCREEN 6: DIET (PRO)                                   -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="screen" id="s-diet">
+  <div class="topbar" style="background:#0d0d0a;border-bottom:2px solid #2a2a1a;">
+    <div class="logo">GRIND<span>VAULT</span></div>
+    <div style="font-family:'Press Start 2P',monospace;font-size:11px;color:var(--gold);">🍎 DIET</div>
+    <div style="font-size:11px;padding:2px 8px;background:var(--gold);color:#000;font-family:'Space Mono',monospace;font-weight:700;">PRO</div>
+  </div>
+
+  <div class="scroll-body">
+
+    <!-- PRO gate -->
+    <div class="gate-overlay" id="diet-gate" style="display:none;">
+      <div class="gate-icon">🍎</div>
+      <div class="gate-title" id="dg-title">飲食建議<br>PRO 功能</div>
+      <div class="gate-desc" id="dg-desc">升級 PRO 解鎖 AI 飲食建議、<br>熱量計算器、外食支出對比。</div>
+      <button class="gate-btn gold-btn" onclick="gotoScreen('s-paywall')">▶ 解鎖 PRO — $4.9/mo</button>
+      <button class="gate-free-btn" onclick="document.getElementById('diet-gate').style.display='none'">繼續瀏覽</button>
+    </div>
+
+    <!-- ── 每日熱量目標 ── -->
+    <div class="section" style="padding-bottom:8px;">
+      <div class="section-title" id="diet-title-tdee">每日熱量目標</div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border);">
+        <div class="m-card" style="text-align:center;">
+          <div class="m-label">TDEE</div>
+          <div class="m-val gold" id="diet-tdee">—</div>
+          <div class="m-sub">kcal/日</div>
+        </div>
+        <div class="m-card" style="text-align:center;">
+          <div class="m-label" id="diet-goal-label">目標</div>
+          <div class="m-val pg" id="diet-goal">—</div>
+          <div class="m-sub">kcal/日</div>
+        </div>
+        <div class="m-card" style="text-align:center;">
+          <div class="m-label" id="diet-protein-label">蛋白質</div>
+          <div class="m-val blue" id="diet-protein">—</div>
+          <div class="m-sub">g/日</div>
+        </div>
+      </div>
+
+      <!-- 目標設定 -->
+      <div style="padding:12px 0 0;">
+        <div style="display:flex;gap:8px;margin-bottom:10px;">
+          <button id="goal-cut" onclick="setDietGoal('cut')" style="flex:1;padding:8px;background:var(--panel2);border:1px solid var(--border);color:var(--red);font-family:'Space Mono',monospace;font-size:12px;cursor:pointer;transition:all .15s;">🔥 減脂</button>
+          <button id="goal-maintain" onclick="setDietGoal('maintain')" style="flex:1;padding:8px;background:var(--panel2);border:1px solid var(--pg);color:var(--pg);font-family:'Space Mono',monospace;font-size:12px;cursor:pointer;transition:all .15s;">◆ 維持</button>
+          <button id="goal-bulk" onclick="setDietGoal('bulk')" style="flex:1;padding:8px;background:var(--panel2);border:1px solid var(--border);color:var(--blue);font-family:'Space Mono',monospace;font-size:12px;cursor:pointer;transition:all .15s;">⚡ 增肌</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 熱量計算器 ── -->
+    <div class="section">
+      <div class="section-title" id="diet-title-calc">🔍 熱量查詢</div>
+      <div style="display:flex;gap:8px;margin-bottom:10px;">
+        <input id="food-inp" type="text" placeholder="輸入食物（雞胸肉、拉麵...）" data-ph-zh="輸入食物（雞胸肉、拉麵...）" data-ph-en="Enter food (chicken, ramen...)" style="flex:1;background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--gold);color:var(--text);font-family:'Space Mono',monospace;font-size:13px;padding:9px 12px;outline:none;">
+        <button onclick="lookupCalorie()" style="padding:9px 14px;background:#111000;border:2px solid var(--gold);color:var(--gold);font-family:'Press Start 2P',monospace;font-size:11px;cursor:pointer;">查</button>
+      </div>
+      <div id="calorie-result" style="font-size:13px;color:var(--dim);min-height:20px;"></div>
+
+      <!-- 今日攝入記錄 -->
+      <div style="margin-top:12px;">
+        <div style="font-size:12px;color:var(--dim);margin-bottom:6px;" id="diet-today-label">今日攝入</div>
+        <div id="food-log-list" style="display:flex;flex-direction:column;gap:5px;"></div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:8px;padding:8px 10px;background:var(--panel2);border:1px solid var(--border);">
+          <span style="font-size:12px;color:var(--dim);" id="diet-total-label">今日總計</span>
+          <span style="flex:1;"></span>
+          <span style="font-family:'Press Start 2P',monospace;font-size:13px;color:var(--gold);" id="diet-total-kcal">0</span>
+          <span style="font-size:11px;color:var(--dim);">kcal</span>
+        </div>
+        <!-- 進度條 -->
+        <div style="height:6px;background:var(--border);margin-top:6px;border-radius:3px;overflow:hidden;">
+          <div id="diet-progress" style="height:100%;background:var(--pg);width:0%;transition:width .4s ease;border-radius:3px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 外食 vs 金融支出對比 ── -->
+    <div class="section">
+      <div class="section-title" id="diet-title-compare">💸 外食支出對比</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);">
+        <div class="m-card">
+          <div class="m-label" id="diet-eating-out-label">本月外食</div>
+          <div class="m-val red" id="diet-eating-out">4,200</div>
+          <div class="m-sub">NT$</div>
+        </div>
+        <div class="m-card">
+          <div class="m-label" id="diet-eating-pct-label">佔總支出</div>
+          <div class="m-val gold" id="diet-eating-pct">21%</div>
+          <div class="m-sub" id="diet-eating-tip">建議 &lt; 15%</div>
+        </div>
+      </div>
+      <div style="margin-top:10px;padding:8px 12px;border-left:3px solid var(--gold);background:var(--panel2);font-size:12px;color:var(--dim);line-height:1.8;" id="diet-finance-note">
+        每月外食 NT$4,200，一年累計 NT$50,400。<br>若每週少外食 2 次，年省約 NT$15,000。
+      </div>
+    </div>
+
+    <!-- ── AI 飲食建議 ── -->
+    <div class="section">
+      <div class="section-title" id="diet-title-ai">◆ AI 飲食建議</div>
+      <button id="diet-ai-btn" onclick="generateDietAdvice()" style="width:100%;padding:12px;background:#111000;border:2px solid var(--gold);color:var(--gold);font-family:'Press Start 2P',monospace;font-size:11px;letter-spacing:1px;cursor:pointer;margin-bottom:10px;">
+        <span id="diet-ai-btn-text">▶ 根據我的體態生成建議</span>
+      </button>
+      <div id="diet-ai-output"></div>
+    </div>
+
+  </div>
+
+  <div class="bottomnav">
+    <button class="nav-item" onclick="gotoScreen('s-home')">
+      <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="8" width="14" height="8"/><path d="M1 9L9 2L17 9"/></svg>
+      <span data-i="nav1">總覽</span>
+    </button>
+    <button class="nav-item" onclick="gotoScreen('s-add')">
+      <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="14" height="11" rx="1"/><line x1="5" y1="8" x2="13" y2="8"/><line x1="5" y1="11" x2="10" y2="11"/></svg>
+      <span data-i="nav2">記帳</span>
+    </button>
+    <button class="nav-item" onclick="gotoScreen('s-fit')">
+      <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 9h2l2-4 2 8 2-6 2 4h4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span data-i="nav5">健身</span>
+    </button>
+    <button class="nav-item active" onclick="gotoScreen('s-diet')">
+      <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2C6 2 4 5 4 8a5 5 0 0010 0c0-3-2-6-2-6"/><line x1="9" y1="8" x2="9" y2="16" stroke-linecap="round"/></svg>
+      <span>飲食</span>
+    </button>
+    <button class="nav-item" onclick="gotoScreen('s-paywall')">
+      <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="7" r="3"/><path d="M3 15C3 12.239 5.686 10 9 10C12.314 10 15 12.239 15 15" stroke-linecap="round"/></svg>
+      <span data-i="nav4">角色</span>
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
 <!--  SCREEN 5: FITNESS                                      -->
 <!-- ═══════════════════════════════════════════════════════ -->
 <div class="screen" id="s-fit">
@@ -1676,7 +1809,7 @@ function setLang(l, btn) {
 }
 
 // ── SCREEN NAV ────────────────────────────────────────────
-const screens = ['s-home','s-add','s-compound','s-paywall','s-fit'];
+const screens = ['s-home','s-add','s-compound','s-paywall','s-fit','s-diet'];
 function gotoScreen(id) {
   screens.forEach(s => {
     const el = document.getElementById(s);
@@ -2424,6 +2557,9 @@ function updateProUI() {
       <div id="ai-report-output" style="margin-top:8px;"></div>
     `;
   }
+  // Update diet gate
+  const dietGate = document.getElementById('diet-gate');
+  if (dietGate) dietGate.style.display = isPro ? 'none' : 'flex';
   // Update trial badge
   const badge = document.getElementById('trialBadge');
   if (badge && isPro) {
@@ -2665,6 +2801,153 @@ function toggleTheme() {
   applyTheme();
 }
 
+// ── DIET MODULE ───────────────────────────────────────────
+let dietGoal = 'maintain';
+let todayKcal = 0;
+let foodLog = [];
+
+const FOOD_DB = {
+  '雞胸肉':165,'雞腿':209,'豬排':242,'牛肉':250,'鮭魚':208,'蛋':155,
+  '白飯':130,'糙米':123,'麵包':265,'吐司':260,'麵條':138,'烏龍麵':132,
+  '花椰菜':34,'菠菜':23,'番茄':18,'地瓜':86,'馬鈴薯':77,'酪梨':160,
+  '蘋果':52,'香蕉':89,'柳橙':47,'藍莓':57,'草莓':32,
+  '牛奶':61,'優格':59,'起司':402,'豆漿':54,'燕麥':389,
+  '拉麵':436,'便當':520,'炒飯':380,'水餃':250,'漢堡':295,'薯條':312,
+  '珍珠奶茶':330,'黑咖啡':5,'美式咖啡':15,'果汁':45,'可樂':42,
+  'chicken':165,'rice':130,'egg':155,'salmon':208,'banana':89,'apple':52,
+  'ramen':436,'burger':295,'milk':61,'oatmeal':389,
+};
+
+function calcTDEE() {
+  const w = parseFloat(document.getElementById('bs-weight')?.textContent) || 70;
+  const f = parseFloat(document.getElementById('bs-fat')?.textContent) || 20;
+  const lbm = w * (1 - f/100);
+  const bmr = Math.round(370 + 21.6 * lbm);
+  const tdee = Math.round(bmr * 1.55);
+  return { tdee, bmr, w, f };
+}
+
+function setDietGoal(goal) {
+  dietGoal = goal;
+  ['cut','maintain','bulk'].forEach(g => {
+    const btn = document.getElementById('goal-'+g);
+    if (!btn) return;
+    btn.style.background = 'var(--panel2)';
+    btn.style.borderColor = 'var(--border)';
+  });
+  const colors = { cut: 'var(--red)', maintain: 'var(--pg)', bulk: 'var(--blue)' };
+  const active = document.getElementById('goal-'+goal);
+  if (active) { active.style.borderColor = colors[goal]; active.style.background = 'var(--panel)'; }
+  updateDietDisplay();
+}
+
+function updateDietDisplay() {
+  const { tdee, w, f } = calcTDEE();
+  const adj = { cut: -400, maintain: 0, bulk: +300 };
+  const target = tdee + adj[dietGoal];
+  const protein = Math.round(w * (dietGoal === 'bulk' ? 2.2 : 2.0));
+
+  const tdeeEl = document.getElementById('diet-tdee');
+  const goalEl = document.getElementById('diet-goal');
+  const protEl = document.getElementById('diet-protein');
+  if (tdeeEl) tdeeEl.textContent = tdee.toLocaleString();
+  if (goalEl) goalEl.textContent = target.toLocaleString();
+  if (protEl) protEl.textContent = protein;
+
+  // update progress bar
+  const pct = Math.min(100, Math.round(todayKcal / target * 100));
+  const bar = document.getElementById('diet-progress');
+  if (bar) {
+    bar.style.width = pct + '%';
+    bar.style.background = pct > 110 ? 'var(--red)' : pct > 90 ? 'var(--gold)' : 'var(--pg)';
+  }
+
+  // update eating out note
+  const eatingOut = parseInt(document.getElementById('val-expense-live')?.textContent?.replace(/,/g,'') || '19800');
+  const diningEst = 4200;
+  const pctExpense = Math.round(diningEst / eatingOut * 100);
+  const pctEl = document.getElementById('diet-eating-pct');
+  if (pctEl) pctEl.textContent = pctExpense + '%';
+  pctEl.className = 'm-val ' + (pctExpense > 15 ? 'red' : 'gold');
+}
+
+function lookupCalorie() {
+  const inp = document.getElementById('food-inp');
+  const res = document.getElementById('calorie-result');
+  if (!inp || !res) return;
+  const q = inp.value.trim().toLowerCase();
+  if (!q) return;
+
+  // search food DB
+  const match = Object.entries(FOOD_DB).find(([k]) => k.toLowerCase().includes(q) || q.includes(k.toLowerCase()));
+  if (match) {
+    const [name, kcal] = match;
+    res.innerHTML = `<div style="display:flex;align-items:center;gap:10px;padding:8px 10px;background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--gold);">
+      <span style="flex:1;font-size:13px;color:var(--text);">${name} (100g)</span>
+      <span style="font-family:'Press Start 2P',monospace;font-size:13px;color:var(--gold);">${kcal}</span>
+      <span style="font-size:11px;color:var(--dim);">kcal</span>
+      <button onclick="addToFoodLog('${name}',${kcal})" style="padding:4px 10px;background:#001a00;border:1px solid var(--pg);color:var(--pg);font-size:11px;cursor:pointer;font-family:'Space Mono',monospace;">+ 加入</button>
+    </div>`;
+  } else {
+    res.innerHTML = `<div style="font-size:12px;color:var(--dim);padding:6px 0;">找不到「${q}」，試試：雞胸肉、白飯、拉麵、香蕉...</div>`;
+  }
+  inp.value = '';
+}
+
+function addToFoodLog(name, kcal) {
+  foodLog.push({ name, kcal });
+  todayKcal += kcal;
+  renderFoodLog();
+  updateDietDisplay();
+  document.getElementById('calorie-result').innerHTML = '';
+  playXPSound();
+}
+
+function renderFoodLog() {
+  const list = document.getElementById('food-log-list');
+  const total = document.getElementById('diet-total-kcal');
+  if (!list) return;
+  list.innerHTML = foodLog.slice(-5).map((f,i) => `
+    <div style="display:flex;align-items:center;gap:8px;padding:6px 10px;background:var(--panel2);border:1px solid var(--border);">
+      <span style="flex:1;font-size:12px;color:var(--text);">${f.name}</span>
+      <span style="font-size:12px;color:var(--gold);">${f.kcal} kcal</span>
+    </div>
+  `).join('');
+  if (total) total.textContent = todayKcal.toLocaleString();
+}
+
+async function generateDietAdvice() {
+  if (!isPro) { gotoScreen('s-paywall'); return; }
+  const btn = document.getElementById('diet-ai-btn-text');
+  const output = document.getElementById('diet-ai-output');
+  if (!output) return;
+  if (btn) btn.textContent = lang==='zh' ? '分析中...' : 'Analyzing...';
+  output.innerHTML = `<div class="ai-loading"><div class="ai-dot"></div><div class="ai-dot"></div><div class="ai-dot"></div><span style="font-size:12px;color:var(--dim);margin-left:4px;">${lang==='zh'?'AI 分析你的體態中...':'Analyzing your body stats...'}</span></div>`;
+
+  const w = document.getElementById('bs-weight')?.textContent || '70';
+  const f = document.getElementById('bs-fat')?.textContent || '20';
+  const goal = { cut:'減脂', maintain:'維持', bulk:'增肌' }[dietGoal];
+
+  const prompt = lang === 'zh'
+    ? `你是遊戲化健身教練。用戶體重 ${w}kg，體脂 ${f}%，目標：${goal}。用像素 RPG 語言（120字內），給出 3 點具體飲食建議，每點用「▶」開頭，包含具體食物推薦。`
+    : `You are a gamified fitness coach. User: ${w}kg, ${f}% body fat, goal: ${dietGoal}. In pixel RPG style (under 120 words), give 3 specific diet tips each starting with "▶", include specific food recommendations.`;
+
+  try {
+    const res = await fetch(`${API_BASE}/api/report`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ income: w, expense: f, invest: dietGoal, level: getLevel(), xp: playerXP, lang, prompt_override: prompt }),
+    });
+    const data = await res.json();
+    const text = data.report || (lang==='zh'?'建議生成失敗，請稍後再試。':'Failed to generate advice.');
+    output.innerHTML = `<div class="ai-report-card">${text.replace(/\n/g,'<br>')}</div>`;
+    if (btn) btn.textContent = lang==='zh' ? '▶ 重新生成建議' : '▶ Regenerate';
+  } catch(e) {
+    output.innerHTML = `<div style="font-size:12px;color:var(--red);padding:8px;">${lang==='zh'?'連線失敗，請稍後再試。':'Connection failed.'}</div>`;
+    if (btn) btn.textContent = lang==='zh' ? '重試' : 'Retry';
+  }
+}
+
 // ── INIT ──────────────────────────────────────────────────
 renderChips();
 calcCmp();
@@ -2675,6 +2958,7 @@ updateFreeCounter();
 updateProUI();
 applyTheme();
 restoreSession();
+updateDietDisplay();
 // show trial summary first when entering paywall
 document.getElementById('s-paywall').addEventListener('transitionend', () => {});
 // auto-show trial summary on paywall open
@@ -2682,6 +2966,11 @@ const origGoto = gotoScreen;
 window.gotoScreen = function(id) {
   origGoto(id);
   if (id === 's-paywall') setTimeout(showTrialSummary, 50);
+  if (id === 's-diet') {
+    updateDietDisplay();
+    const gate = document.getElementById('diet-gate');
+    if (gate) gate.style.display = !isPro ? 'flex' : 'none';
+  }
 };
 </script>
 <!-- flash overlay -->
