@@ -23,7 +23,7 @@
 <meta name="twitter:title" content="Grindvault">
 <meta name="twitter:description" content="Gamified finance & fitness tracker — level up your wealth and body">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
 <style>
 :root {
   --pg: #00FF41;
@@ -114,6 +114,7 @@ html, body {
   background: var(--bg);
   color: var(--pg);
   font-family: 'Space Mono', monospace;
+  font-weight: 700;
   min-height: 100vh;
   max-width: 480px;
   margin: 0 auto;
@@ -621,6 +622,91 @@ body::after {
   50%     { box-shadow: 0 0 6px var(--gold); }
 }
 #xp-progress-bar { animation: xp-pulse 2s ease-in-out infinite; }
+
+/* ── LEVELUP SPECIAL EFFECTS ────────────────────────────── */
+
+/* 1. 全頁閃光（打雷效果） */
+#flash-overlay {
+  position: fixed; inset: 0; z-index: 9000;
+  background: #fff; opacity: 0; pointer-events: none;
+  transition: opacity 0.05s;
+}
+@keyframes thunder-flash {
+  0%   { opacity: 0; }
+  10%  { opacity: 0.95; }
+  20%  { opacity: 0.1; }
+  35%  { opacity: 0.85; }
+  50%  { opacity: 0; }
+  65%  { opacity: 0.4; }
+  80%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+.thunder-active { animation: thunder-flash 0.5s ease-out forwards !important; }
+
+/* 2. LV 數字大展示 */
+#lv-display-overlay {
+  position: fixed; inset: 0; z-index: 8500;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.75); pointer-events: none; opacity: 0;
+  transition: opacity 0.3s;
+}
+#lv-display-overlay.show { opacity: 1; }
+#lv-number {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 72px; color: var(--gold);
+  text-shadow: 0 0 30px rgba(255,215,0,0.8);
+  animation: lv-pop 0.4s cubic-bezier(.17,.67,.35,1.3) both;
+}
+#lv-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 16px; color: var(--pg); margin-top: 12px;
+  animation: lv-pop 0.4s 0.1s cubic-bezier(.17,.67,.35,1.3) both;
+}
+@keyframes lv-pop {
+  from { transform: scale(0.2); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+/* 3. XP 條滿格爆炸 */
+@keyframes xp-explode {
+  0%   { transform: scaleX(1); }
+  40%  { transform: scaleX(1.08); filter: brightness(2); }
+  60%  { transform: scaleX(0.95); }
+  80%  { transform: scaleX(1.03); }
+  100% { transform: scaleX(1); filter: brightness(1); }
+}
+.xp-exploding { animation: xp-explode 0.5s ease-out forwards !important; }
+
+/* 4. 像素小人換裝 — 裝備依序出現 */
+#gear-equip-overlay {
+  position: fixed; inset: 0; z-index: 8000;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.6); pointer-events: none; opacity: 0;
+  transition: opacity 0.3s;
+}
+#gear-equip-overlay.show { opacity: 1; }
+.gear-item {
+  font-size: 28px; margin: 4px;
+  animation: gear-appear 0.3s cubic-bezier(.17,.67,.35,1.3) both;
+}
+@keyframes gear-appear {
+  from { transform: translateY(-20px) scale(0); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+.gear-item:nth-child(1) { animation-delay: 0s; }
+.gear-item:nth-child(2) { animation-delay: 0.15s; }
+.gear-item:nth-child(3) { animation-delay: 0.3s; }
+.gear-item:nth-child(4) { animation-delay: 0.45s; }
+.gear-item:nth-child(5) { animation-delay: 0.6s; }
+
+/* avatar during gear equip */
+@keyframes avatar-bounce-equip {
+  0%,100% { transform: translateY(0) scale(1); }
+  25%     { transform: translateY(-8px) scale(1.1); }
+  50%     { transform: translateY(0) scale(0.95); }
+  75%     { transform: translateY(-4px) scale(1.05); }
+}
+.avatar-equipping svg { animation: avatar-bounce-equip 0.4s ease-in-out infinite !important; }
 
 /* ── 8. LOGO flicker ───────────────────────────────────── */
 @keyframes logo-flicker {
@@ -1705,8 +1791,29 @@ function addXP(amount) {
   playerXP += amount;
   const newLv = getLevel();
   updateXPBar(amount);
-  if (newLv > prevLv) setTimeout(() => showLevelUp(newLv), 600);
+  if (newLv > prevLv) {
+    setTimeout(() => showLevelUp(newLv), 600);
+  } else {
+    playXPSound(); // small beep for normal XP gain
+  }
   checkAchievements();
+}
+
+function playXPSound() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'square';
+    osc.frequency.setValueAtTime(440, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.08);
+    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.15);
+  } catch(e) { /* audio not supported */ }
 }
 
 function updateXPBar(flashAmt) {
@@ -1729,12 +1836,105 @@ function updateXPBar(flashAmt) {
 }
 
 function showLevelUp(lv) {
+  // 1. 升級音效
+  playLevelUpSound();
+  // 2. 全頁閃光
+  flashThunder();
+  // 3. XP 條爆炸
+  xpBarExplode();
+  // 4. 大 LV 數字展示
+  setTimeout(() => showLvDisplay(lv), 300);
+  // 5. 換裝動畫
+  setTimeout(() => showGearEquip(lv), 800);
+  // 6. confetti
+  setTimeout(() => fireConfetti(), 400);
+  // toast
   const el = document.getElementById('levelup-toast');
+  if (el) {
+    el.textContent = i18n[lang].levelup_msg.replace('{n}', lv);
+    el.style.opacity = '1'; el.style.transform = 'translateX(-50%) translateY(0)';
+    setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateX(-50%) translateY(-20px)'; }, 3000);
+  }
+}
+
+function flashThunder() {
+  const el = document.getElementById('flash-overlay');
   if (!el) return;
-  el.textContent = i18n[lang].levelup_msg.replace('{n}', lv);
-  el.style.opacity = '1'; el.style.transform = 'translateX(-50%) translateY(0)';
-  fireConfetti();
-  setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateX(-50%) translateY(-20px)'; }, 2500);
+  el.classList.remove('thunder-active');
+  void el.offsetWidth; // reflow
+  el.classList.add('thunder-active');
+  setTimeout(() => el.classList.remove('thunder-active'), 600);
+}
+
+function xpBarExplode() {
+  const bar = document.getElementById('xp-progress-bar');
+  if (!bar) return;
+  // fill to 100% then reset
+  bar.style.transition = 'width 0.3s ease';
+  bar.style.width = '100%';
+  bar.classList.add('xp-exploding');
+  setTimeout(() => {
+    bar.classList.remove('xp-exploding');
+    bar.style.width = getLevelXP() + '%';
+  }, 600);
+}
+
+function showLvDisplay(lv) {
+  const overlay = document.getElementById('lv-display-overlay');
+  const numEl = document.getElementById('lv-number');
+  const lblEl = document.getElementById('lv-label');
+  const subEl = document.getElementById('lv-sublabel');
+  if (!overlay) return;
+  if (numEl) numEl.textContent = 'LV.' + lv;
+  if (lblEl) lblEl.textContent = lang === 'zh' ? 'LEVEL UP!' : 'LEVEL UP!';
+  if (subEl) subEl.textContent = lang === 'zh' ? '新裝備解鎖！繼續刷怪！' : 'New gear unlocked! Keep grinding!';
+  overlay.classList.add('show');
+  setTimeout(() => overlay.classList.remove('show'), 1800);
+}
+
+function showGearEquip(lv) {
+  const overlay = document.getElementById('gear-equip-overlay');
+  const wrap = document.getElementById('gear-items-wrap');
+  if (!overlay || !wrap) return;
+  // gear set based on level
+  const gearSets = [
+    ['⚔️'],
+    ['⚔️','🛡️'],
+    ['⚔️','🛡️','👟'],
+    ['⚔️','🛡️','👟','💍'],
+    ['⚔️','🛡️','👟','💍','👑'],
+  ];
+  const set = gearSets[Math.min(lv - 1, gearSets.length - 1)];
+  wrap.innerHTML = set.map(g => `<div class="gear-item">${g}</div>`).join('');
+  // avatar bounce
+  const avatar = document.querySelector('.avatar');
+  if (avatar) {
+    avatar.classList.add('avatar-equipping');
+    setTimeout(() => avatar.classList.remove('avatar-equipping'), 1200);
+  }
+  overlay.classList.add('show');
+  setTimeout(() => overlay.classList.remove('show'), 1500);
+}
+
+// ── WEB AUDIO LEVEL UP SOUND ──────────────────────────────
+function playLevelUpSound() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const notes = [523, 659, 784, 1047]; // C5 E5 G5 C6
+    notes.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.type = 'square';
+      osc.frequency.value = freq;
+      const start = ctx.currentTime + i * 0.12;
+      gain.gain.setValueAtTime(0.18, start);
+      gain.gain.exponentialRampToValueAtTime(0.001, start + 0.18);
+      osc.start(start);
+      osc.stop(start + 0.2);
+    });
+  } catch(e) { /* audio not supported */ }
 }
 
 // ── CONFETTI ──────────────────────────────────────────────
@@ -2537,6 +2737,22 @@ window.gotoScreen = function(id) {
   if (id === 's-paywall') setTimeout(showTrialSummary, 50);
 };
 </script>
+<!-- flash overlay -->
+<div id="flash-overlay"></div>
+
+<!-- LV big display -->
+<div id="lv-display-overlay">
+  <div id="lv-number">LV.1</div>
+  <div id="lv-label">LEVEL UP!</div>
+  <div style="font-family:'Space Mono',monospace;font-size:12px;color:var(--dim);margin-top:8px;" id="lv-sublabel">新裝備解鎖！</div>
+</div>
+
+<!-- gear equip overlay -->
+<div id="gear-equip-overlay">
+  <div style="font-family:'Press Start 2P',monospace;font-size:12px;color:var(--gold);margin-bottom:12px;">裝備升級</div>
+  <div id="gear-items-wrap" style="display:flex;gap:8px;"></div>
+</div>
+
 <div id="badge-toast"></div>
 
 <!-- sync toast -->
